@@ -1,0 +1,50 @@
+{
+  "show": {
+    "label": "Show Classifier",
+    "S": "Season",
+    "PRE": "Premiere",
+    "PRS": "Premieres",
+    "SPR": "Season Premiere",
+    "ANS": "All-New Season",
+    "ORG": "Original Series",
+    "AD": "All Day",
+    "AN": "All-New",
+    "MAR": "Marathon",
+    "BTB": "Back to Back",
+    "THG": "Thanksgiving Marathon",
+    "NYE": "New Year's Eve Marathon",
+    "NYD": "New Year's Day Marathon"
+  },
+  "tune-in": {
+    "label": "Tune-in Classifier",
+    "S": "Season",
+    "PRE": "Premiere",
+    "PRS": "Premieres",
+    "SPR": "Season Premiere",
+    "NEX": "Next",
+    "ORG": "Original Series",
+    "AD": "All Day",
+    "AN": "All-New",
+    "RT": "Returns",
+    "MAR": "Marathon",
+    "BTB": "Back to Back",
+    "THG": "Thanksgiving Marathon",
+    "NYE": "New Year's Eve Marathon",
+    "NYD": "New Year's Day Marathon"
+  },
+  "bump": {
+    "label": "Select",
+    "S": "Season",
+    "PRE": "Premiere",
+    "SPR": "Season Premiere",
+    "NEX": "Next",
+    "ORG": "Original Series",
+    "AD": "All Day",
+    "AN": "All New",
+    "BTB": "Back to Back",
+    "KEEP": "Keep Watching",
+    "AEP": "Another Episode",
+    "SLP": "Can't Sleep?",
+    "RISE": "Rise & Shine"
+  }
+}

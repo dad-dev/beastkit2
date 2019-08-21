@@ -1,0 +1,249 @@
+{
+  "BBD": {
+    "title": "BLUE\nBLOODS",
+    "subtitle": "",
+    "style": {
+              "pos": [294, 354],
+              "scale": [100, 100, 0],
+              "sub_pos": false,
+              "sub_scale": [100, 100, 0],
+              "clas_pos": [294, 264],
+              "clas_scale": [100, 100, 0],
+              "is_orig": false
+            }
+  },
+  "BRN": {
+    "title": "BURN\nNOTICE",
+    "subtitle": "",
+    "style": {
+              "pos": [294, 354],
+              "scale": [100, 100, 0],
+              "sub_pos": false,
+              "sub_scale": [100, 100, 0],
+              "clas_pos": [294, 264],
+              "clas_scale": [100, 100, 0],
+              "is_orig": false
+            }
+  },
+  "CPD": {
+    "title": "CHICAGO\nP.D.",
+    "subtitle": "",
+    "style": {
+              "pos": [294, 354],
+              "scale": [100, 100, 0],
+              "sub_pos": false,
+              "sub_scale": [100, 100, 0],
+              "clas_pos": [294, 264],
+              "clas_scale": [100, 100, 0],
+              "is_orig": false
+            }
+  },
+  "CRM": {
+    "title": "CRIMINAL\nMINDS",
+    "subtitle": "",
+    "style": {
+              "pos": [294, 354],
+              "scale": [100, 100, 0],
+              "sub_pos": false,
+              "sub_scale": [100, 100, 0],
+              "clas_pos": [294, 264],
+              "clas_scale": [100, 100, 0],
+              "is_orig": false
+            }
+  },
+  "CSB": {
+    "title": "CRIMINAL\nMINDS",
+    "subtitle": "SUSPECT BEHAVIOR",
+    "style": {
+              "pos": [294, 354],
+              "scale": [100, 100, 0],
+              "sub_pos": [294, 500],
+              "sub_scale": [100, 100, 0],
+              "clas_pos": [294, 264],
+              "clas_scale": [100, 100, 0],
+              "is_orig": false
+            }
+  },
+  "CSI": {
+    "title": "CSI",
+    "subtitle": "CRIME SCENE\nINVESTIGATION",
+    "style": {
+              "pos": [294, 354],
+              "scale": [100, 100, 0],
+              "sub_pos": [294, 405],
+              "sub_scale": [100, 100, 0],
+              "clas_pos": [294, 264],
+              "clas_scale": [100, 100, 0],
+              "is_orig": false
+            }
+  },
+  "DEL": {
+    "title": "THE\nDETAIL",
+    "subtitle": "",
+    "style": {
+              "pos": [294, 354],
+              "scale": [100, 100, 0],
+              "sub_pos": false,
+              "sub_scale": [100, 100, 0],
+              "clas_pos": [294, 264],
+              "clas_scale": [100, 100, 0],
+              "is_orig": true
+            }
+  },
+  "GHW": {
+    "title": "GHOST\nWHISPERER",
+    "subtitle": "",
+    "style": {
+              "pos": [294, 354],
+              "scale": [100, 100, 0],
+              "sub_pos": false,
+              "sub_scale": [100, 100, 0],
+              "clas_pos": [294, 264],
+              "clas_scale": [100, 100, 0],
+              "is_orig": false
+            }
+  },
+  "LWO": {
+    "title": "LAW &\nORDER",
+    "subtitle": "",
+    "style": {
+              "pos": [294, 354],
+              "scale": [100, 100, 0],
+              "sub_pos": false,
+              "sub_scale": [100, 100, 0],
+              "clas_pos": [294, 264],
+              "clas_scale": [100, 100, 0],
+              "is_orig": false
+            }
+  },
+  "LAO": {
+    "title": "LAW &\nORDER",
+    "subtitle": "CRIMINAL INTENT",
+    "style": {
+              "pos": [294, 354],
+              "scale": [100, 100, 100],
+              "sub_pos": [294, 500],
+              "sub_scale": [100, 100, 0],
+              "clas_pos": [294, 264],
+              "clas_scale": [100, 100, 0],
+              "is_orig": false
+            }
+  },
+  "SVU": {
+    "title": "LAW &\nORDER",
+    "subtitle": "SVU",
+    "style": {
+              "pos": [294, 354],
+              "scale": [100, 100, 100],
+              "sub_pos": [294, 500],
+              "sub_scale": [100, 100, 100],
+              "clas_pos": [294, 264],
+              "clas_scale": [100, 100, 0],
+              "is_orig": false
+            }
+  },
+  "LEV": {
+    "title": "LEVERAGE",
+    "subtitle": "",
+    "style": {
+              "pos": [294, 354],
+              "scale": [100, 100, 0],
+              "sub_pos": false,
+              "sub_scale": [100, 100, 0],
+              "clas_pos": [294, 264],
+              "clas_scale": [100, 100, 0],
+              "is_orig": false
+            }
+  },
+  "LST": {
+    "title": "THE\nLISTENER",
+    "subtitle": "",
+    "style": {
+              "pos": [294, 354],
+              "scale": [100, 100, 0],
+              "sub_pos": false,
+              "sub_scale": [100, 100, 0],
+              "clas_pos": [294, 264],
+              "clas_scale": [100, 100, 0],
+              "is_orig": true
+            }
+  },
+  "NLA": {
+    "title": "NCIS",
+    "subtitle": "LOS ANGELES",
+    "style": {
+              "pos": [294, 354],
+              "scale": [100, 100, 0],
+              "sub_pos": [294, 405],
+              "sub_scale": [100, 100, 0],
+              "clas_pos": [294, 264],
+              "clas_scale": [100, 100, 0],
+              "is_orig": false
+            }
+  },
+  "PVE": {
+    "title": "PRIVATE EYES",
+    "subtitle": "",
+    "style": {
+              "pos": [294, 354],
+              "scale": [100, 100, 0],
+              "sub_pos": false,
+              "sub_scale": [100, 100, 0],
+              "clas_pos": [294, 264],
+              "clas_scale": [100, 100, 0],
+              "is_orig": true
+            }
+  },
+  "PSY": {
+    "title": "PSYCH",
+    "subtitle": "",
+    "style": {
+              "pos": [294, 354],
+              "scale": [100, 100, 0],
+              "sub_pos": false,
+              "sub_scale": [100, 100, 0],
+              "clas_pos": [294, 264],
+              "clas_scale": [100, 100, 0],
+              "is_orig": false
+            }
+  },
+  "RBL": {
+    "title": "ROOKIE\nBLUE",
+    "subtitle": "",
+    "style": {
+              "pos": [294, 354],
+              "scale": [100, 100, 0],
+              "sub_pos": false,
+              "sub_scale": [100, 100, 0],
+              "clas_pos": [294, 264],
+              "clas_scale": [100, 100, 0],
+              "is_orig": false
+            }
+  },
+  "SVH": {
+    "title": "SAVING\nHOPE",
+    "subtitle": "",
+    "style": {
+              "pos": [294, 354],
+              "scale": [100, 100, 0],
+              "sub_pos": false,
+              "sub_scale": [100, 100, 0],
+              "clas_pos": [294, 264],
+              "clas_scale": [100, 100, 0],
+              "is_orig": true
+            }
+  },
+  "WHC": {
+    "title": "WHITE\nCOLLAR",
+    "subtitle": "",
+    "style": {
+              "pos": [294, 354],
+              "scale": [100, 100, 0],
+              "sub_pos": false,
+              "sub_scale": [100, 100, 0],
+              "clas_pos": [294, 264],
+              "clas_scale": [100, 100, 0],
+              "is_orig": false
+            }
+  }
+}

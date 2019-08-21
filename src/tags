@@ -1,0 +1,8 @@
+Machine	state_machine_test.jsx	/^function Machine(state) {$/
+Mmain.jsx	main.jsx	/^function main() {$/
+Model	models.jsx	/^  function Model(data) {$/
+for	state_machine_test.jsx	/^for (var i = 1; i <= app.project.items.length; i++/
+function	controllers.jsx	/^  ui.ui_events.epi_ver.onClick = function() { vers/
+if	scratch.jsx	/^if (text_obj.one_line == true) stateNumber = state/
+init	controllers.jsx	/^\/\/ Below are a number of controllers.  Controlle/
+task	watch-test.jsx	/^function task() {$/

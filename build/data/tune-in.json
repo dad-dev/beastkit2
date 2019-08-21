@@ -1,0 +1,59 @@
+{
+    "day1": {
+      "label": "Day One",
+      "NEX": "Next",
+      "MON": "Monday",
+      "TUE": "Tuesday",
+      "WED": "Wednesday",
+      "THU": "Thursday",
+      "FRI": "Friday",
+      "SAT": "Saturday",
+      "SUN": "Sunday",
+      "TOD": "Today",
+      "TON": "Tonight",
+      "TOM": "Tomorrow",
+      "WKD": "Weekdays",
+      "WKN": "Weeknights",
+      "KEP": "Keep Watching",
+      "AD": "All Day"
+    },
+    "day2": {
+      "label": "Day Two",
+      "MON": "Monday",
+      "TUE": "Tuesday",
+      "WED": "Wednesday",
+      "THU": "Thursday",
+      "FRI": "Friday",
+      "SAT": "Saturday",
+      "SUN": "Sunday",
+      "TOD": "Today",
+      "TON": "Tonight",
+      "TOM": "Tomorrow"
+    },
+    "day3": {
+      "label": "Day Three",
+      "MON": "Monday",
+      "TUE": "Tuesday",
+      "WED": "Wednesday",
+      "THU": "Thursday",
+      "FRI": "Friday",
+      "SAT": "Saturday",
+      "SUN": "Sunday",
+      "TOM": "Tomorrow"
+    },
+    "months": {
+      "JAN": "January",
+      "FEB": "February",
+      "MAR": "March",
+      "APR": "April",
+      "MAY": "May",
+      "JUN": "June",
+      "JUL": "July",
+      "AUG": "August",
+      "SEP": "September",
+      "OCT": "October",
+      "NOV": "November",
+      "DEC": "December"
+    },
+    "time": ["Select Time", "1:00", "2:00", "3:00", "4:00", "5:00", "6:00", "7:00", "8:00", "9:00", "10:00", "11:00", "12:00"]
+}

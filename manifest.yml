@@ -1,0 +1,7 @@
+---
+- src/main.jsx
+- src/dom.jsx
+- src/models.jsx
+- src/ui.jsx
+- src/controllers.jsx
+- src/end-main.jsx

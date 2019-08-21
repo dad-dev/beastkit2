@@ -1,0 +1,226 @@
+{
+  "epl styles": {
+    "tune-in block": {
+      "title one-line": {
+        "one day": {
+          "Tune-in Classifier": {
+            "pos": [294,516],
+            "scale": [100, 100, 0],
+            "opacity": 100
+          },
+          "Day 1": {
+            "pos": [294,560],
+            "scale": [100, 100, 0],
+            "opacity": 100
+          },
+          "Ordinal Suffix 1": {
+            "pos": [600, 551],
+            "scale": [100, 100, 0],
+            "opacity": 100
+          },
+          "Time Database Left": {
+            "pos": [873, 360],
+            "scale": [100, 100, 0],
+            "opacity": 100
+          }
+        },
+        "two day": {
+          "Tune-in Classifier": {
+            "pos": [294,516],
+            "scale": [100, 100, 0],
+            "opacity": 100
+          },
+          "Day 1": {
+            "pos": [294,560],
+            "scale": [100, 100, 0],
+            "opacity": 100
+          },
+          "Day 2": {
+            "pos": [294,602],
+            "scale": [100, 100, 0],
+            "opacity": 100
+          },
+          "Ordinal Suffix 1": {
+            "pos": [600, 551],
+            "scale": [100, 100, 0],
+            "opacity": 100
+          },
+          "Ordinal Suffix 2": {
+            "pos": [600, 592],
+            "scale": [100, 100, 0],
+            "opacity": 100
+          },
+          "Time Database Left": {
+            "pos": [873, 408],
+            "scale": [100, 100, 0],
+            "opacity": 100
+          }
+        },
+        "three day": {
+          "Tune-in Classifier": {
+            "pos": [294,516],
+            "scale": [100, 100, 0],
+            "opacity": 100
+          },
+          "Day 1": {
+            "pos": [294,560],
+            "scale": [100, 100, 0],
+            "opacity": 100
+          },
+          "Day 2": {
+            "pos": [294,602],
+            "scale": [100, 100, 0],
+            "opacity": 100
+          },
+          "Day 3": {
+            "pos": [294,643],
+            "scale": [100, 100, 0],
+            "opacity": 100
+          },
+          "Ordinal Suffix 1": {
+            "pos": [600, 551],
+            "scale": [100, 100, 0],
+            "opacity": 100
+          },
+          "Ordinal Suffix 2": {
+            "pos": [600, 593],
+            "scale": [100, 100, 0],
+            "opacity": 100
+          },
+          "Time Database Left": {
+            "pos": [873, 404],
+            "scale": [100, 100, 0],
+            "opacity": 0
+          }
+        },
+        "next": {
+          "Tune-in Classifier": {
+            "pos": [294,516],
+            "scale": [100, 100, 0],
+            "opacity": 0
+          },
+          "Day 1": {
+            "pos": [294,580],
+            "scale": [200, 200, 0],
+            "opacity": 100
+          },
+          "Time Database Left": {
+            "pos": [873, 404],
+            "scale": [100, 100, 0],
+            "opacity": 0
+          }
+        }
+      },
+      "title two-line": {
+        "one day": {
+          "Tune-in Classifier": {
+            "pos": [294,566],
+            "scale": [100, 100, 0],
+            "opacity": 100
+          },
+          "Day 1": {
+            "pos": [294,610],
+            "scale": [100, 100, 0],
+            "opacity": 100
+          },
+          "Ordinal Suffix 1": {
+            "pos": [600, 601],
+            "scale": [100, 100, 0],
+            "opacity": 100
+          },
+          "Time Database Left": {
+            "pos": [873, 410],
+            "scale": [100, 100, 0],
+            "opacity": 100
+          }
+        },
+        "two day": {
+          "Tune-in Classifier": {
+            "pos": [294,566],
+            "scale": [100, 100, 0],
+            "opacity": 100
+          },
+          "Day 1": {
+            "pos": [294,610],
+            "scale": [100, 100, 0],
+            "opacity": 100
+          },
+          "Day 2": {
+            "pos": [294,652],
+            "scale": [100, 100, 0],
+            "opacity": 100
+          },
+          "Ordinal Suffix 1": {
+            "pos": [600, 600],
+            "scale": [100, 100, 0],
+            "opacity": 100
+          },
+          "Ordinal Suffix 2": {
+            "pos": [600, 642],
+            "scale": [100, 100, 0],
+            "opacity": 100
+          },
+          "Time Database Left": {
+            "pos": [873, 458],
+            "scale": [100, 100, 0],
+            "opacity": 100
+          }
+        },
+        "three day": {
+          "Tune-in Classifier": {
+            "pos": [294,566],
+            "scale": [100, 100, 0],
+            "opacity": 100
+          },
+          "Day 1": {
+            "pos": [294,610],
+            "scale": [100, 100, 0],
+            "opacity": 100
+          },
+          "Day 2": {
+            "pos": [294,652],
+            "scale": [100, 100, 0],
+            "opacity": 100
+          },
+          "Day 3": {
+            "pos": [294,693],
+            "scale": [100, 100, 0],
+            "opacity": 100
+          },
+          "Ordinal Suffix 1": {
+            "pos": [600, 551],
+            "scale": [100, 100, 0],
+            "opacity": 100
+          },
+          "Ordinal Suffix 2": {
+            "pos": [600, 593],
+            "scale": [100, 100, 0],
+            "opacity": 100
+          },
+          "Time Database Left": {
+            "pos": [873, 458],
+            "scale": [100, 100, 0],
+            "opacity": 0
+          }
+        },
+        "next": {
+          "Tune-in Classifier": {
+            "pos": [294,516],
+            "scale": [100, 100, 0],
+            "opacity": 0
+          },
+          "Day 1": {
+            "pos": [294,624],
+            "scale": [200, 200, 0],
+            "opacity": 100
+          },
+          "Time Database Left": {
+            "pos": [873, 404],
+            "scale": [100, 100, 0],
+            "opacity": 0
+          }
+        }
+      }
+    }
+  }
+}
