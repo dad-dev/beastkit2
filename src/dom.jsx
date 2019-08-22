@@ -172,10 +172,13 @@ var dom_view = (function(utils) {
     for (var key in data) {
       set_text(epl_text_vert_a, key, data[key]);  
       set_text(epl_text_horiz_a, key, data[key]);  
+      set_text(l3d_title, key, data[key]);
     }
   }
 
+    /*
   function set_layer_props(c, l, data) {
+    // Error at launch, data undefined.
     try {
       c[0].layer(l).position.setValue(data[l]["position"]);
       c[0].layer(l).scale.setValue(data[l]["scale"]);
@@ -187,6 +190,8 @@ var dom_view = (function(utils) {
 
     }
   }
+  */
+
 
   function set_style_l3d() {
     var day_x = Math.max(utils.measure_x(l3d_title.layer("Classifier1"), 51)[0], utils.measure_x(l3d_title.layer("Show"), 51)[0]);
@@ -204,13 +209,31 @@ var dom_view = (function(utils) {
   }
 
   function set_style(data) {
-    function dataLoop(styleObj, comps) {
-      for(var key in styleObj) {
-        set_layer_props(comps, key, styleObj);
-      }
-    }
-    dataLoop(data[0], [epl_text_vert_a, epl_text_vert_b]);
-    dataLoop(data[1], [epl_text_horiz_a, epl_text_horiz_b]);
+    //alert(data[0]["Title"]["position"]);
+    //alert(data[1]["Classifier2"]["scale"]);
+    //function dataLoop(styleObj, comps) {
+    //  for(var key in styleObj) {
+    //    set_layer_props(comps, key, styleObj);
+    //  }
+    //}
+    //dataLoop(data[0], [epl_text_vert_a, epl_text_vert_b]);
+    //dataLoop(data[1], [epl_text_horiz_a, epl_text_horiz_b]);
+
+    var layersGrp1 = ["Classifier1", "Title", "Subtitle", "Classifier2", "Time"];
+    layersGrp1.map(function(l) {
+      epl_text_vert_a.layer(l).position.setValue(data[0][l]["position"]);
+      epl_text_vert_a.layer(l).scale.setValue(data[0][l]["scale"]);
+      epl_text_horiz_a.layer(l).position.setValue(data[1][l]["position"]);
+      epl_text_horiz_a.layer(l).scale.setValue(data[1][l]["scale"]);
+    });
+
+    var layersGrp2 = ["Day1", "Day2", "Day3", "Ordinal1", "Ordinal2"];
+    layersGrp2.map(function(l) {
+      epl_text_vert_b.layer(l).position.setValue(data[0][l]["position"]);
+      epl_text_vert_b.layer(l).scale.setValue(data[0][l]["scale"]);
+      epl_text_horiz_b.layer(l).position.setValue(data[1][l]["position"]);
+      epl_text_horiz_b.layer(l).scale.setValue(data[1][l]["scale"]);
+    });
 
     set_style_l3d();
   }
@@ -227,6 +250,14 @@ var dom_view = (function(utils) {
         c.layer("Time").enabled = true;
       }
     }); 
+
+    if (data) {
+      l3d_title.layer("Classifier2").enabled = false;
+      l3d_title.layer("l3d tunein").enabled = false;
+    } else {
+      l3d_title.layer("Classifier2").enabled = true;
+      l3d_title.layer("l3d tunein").enabled = true;
+    }
   }
 
 
@@ -239,13 +270,7 @@ var dom_view = (function(utils) {
     update_time: function(data) {
       if (typeof(data) === "object") {
         change_time(data);
-      } else if (data) {
-        epl_text_vert_a.layer("Time").opacity.setValue(0);
-        epl_text_horiz_a.layer("Time").opacity.setValue(0);
-      } else {
-        epl_text_vert_a.layer("Time").opacity.setValue(100);
-        epl_text_horiz_a.layer("Time").opacity.setValue(100);
-      } 
+      } else hideTime(data);
     },
     update_days: function(data) { set_days(data); },
     update_classifiers: function(data) { set_classifiers(data); },

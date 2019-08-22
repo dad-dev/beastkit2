@@ -369,40 +369,55 @@ function set_title(data) {
   //////////// End talent layers
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  //////////// Set time 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////// Set time 
 
-  // timeDBleft
-  function change_time(data) {
-    var offset = 0;
-    if (data[1]) offset = 12;
+// timeDBleft
+function change_time(data) {
+  var offset = 0;
+  if (data[1]) offset = 12;
 
-    if (data[0] !== 0) {
-      for (var i = 1; i < timeDB.numLayers; i++) {
-        timeDB.layer(i).opacity.setValue(0);
-        timeDBleft.layer(i).opacity.setValue(0);
-        timeDBl3d.layer(i).opacity.setValue(0);
-      }
-      timeDB.layer(data[0] + offset).opacity.setValue(100);
-      timeDBleft.layer(data[0] + offset).opacity.setValue(100);
-      timeDBl3d.layer(data[0] + offset).opacity.setValue(100);
-      timeDBleft.layer(25).position.setValue( utils.measure_x(timeDBleft.layer(data[0] + offset), 20) );
-      timeDBl3d.layer(25).position.setValue( utils.measure_x(timeDBl3d.layer(data[0] + offset), 20) );
-      if (data[2]) {
-        timeDB.layer(25).property("Source Text").setValue("AM"); 
-        timeDBleft.layer(25).property("Source Text").setValue("AM");
-        timeDBl3d.layer(25).property("Source Text").setValue("AM");
-      } else {
-        timeDB.layer(25).property("Source Text").setValue("PM");
-        timeDBleft.layer(25).property("Source Text").setValue("PM");
-        timeDBl3d.layer(25).property("Source Text").setValue("PM");
-      } 
+  if (data[0] !== 0) {
+    for (var i = 1; i < timeDB.numLayers; i++) {
+      timeDB.layer(i).opacity.setValue(0);
+      timeDBleft.layer(i).opacity.setValue(0);
+      timeDBl3d.layer(i).opacity.setValue(0);
     }
-
+    timeDB.layer(data[0] + offset).opacity.setValue(100);
+    timeDBleft.layer(data[0] + offset).opacity.setValue(100);
+    timeDBl3d.layer(data[0] + offset).opacity.setValue(100);
+    timeDBleft.layer(25).position.setValue( utils.measure_x(timeDBleft.layer(data[0] + offset), 20) );
+    timeDBl3d.layer(25).position.setValue( utils.measure_x(timeDBl3d.layer(data[0] + offset), 20) );
+    if (data[2]) {
+      timeDB.layer(25).property("Source Text").setValue("AM"); 
+      timeDBleft.layer(25).property("Source Text").setValue("AM");
+      timeDBl3d.layer(25).property("Source Text").setValue("AM");
+    } else {
+      timeDB.layer(25).property("Source Text").setValue("PM");
+      timeDBleft.layer(25).property("Source Text").setValue("PM");
+      timeDBl3d.layer(25).property("Source Text").setValue("PM");
+    } 
   }
+}
 
-  //////////// End set time
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function hideTime(data) {
+  if (data) {
+    epl_text_vert_a.layer("Time").opacity.setValue(0);
+    epl_text_horiz_a.layer("Time").opacity.setValue(0);
+    l3d_tunein.layer("Time1").opacity.setValue(0);
+    l3d_tunein.layer("Time2").opacity.setValue(0);
+    l3d_tunein.layer("Time3").opacity.setValue(0);
+  } else {
+    epl_text_vert_a.layer("Time").opacity.setValue(100);
+    epl_text_horiz_a.layer("Time").opacity.setValue(100);
+    l3d_tunein.layer("Time1").opacity.setValue(100);
+    l3d_tunein.layer("Time2").opacity.setValue(100);
+    l3d_tunein.layer("Time3").opacity.setValue(100);
+  } 
+}
+
+//////////// End set time
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   function set_text(comp, lay, value) {
     if (comp == l3d_tunein && (/,/g).test(value)) {
@@ -455,10 +470,13 @@ function set_title(data) {
     for (var key in data) {
       set_text(epl_text_vert_a, key, data[key]);  
       set_text(epl_text_horiz_a, key, data[key]);  
+      set_text(l3d_title, key, data[key]);
     }
   }
 
+    /*
   function set_layer_props(c, l, data) {
+    // Error at launch, data undefined.
     try {
       c[0].layer(l).position.setValue(data[l]["position"]);
       c[0].layer(l).scale.setValue(data[l]["scale"]);
@@ -470,6 +488,8 @@ function set_title(data) {
 
     }
   }
+  */
+
 
   function set_style_l3d() {
     var day_x = Math.max(utils.measure_x(l3d_title.layer("Classifier1"), 51)[0], utils.measure_x(l3d_title.layer("Show"), 51)[0]);
@@ -487,13 +507,31 @@ function set_title(data) {
   }
 
   function set_style(data) {
-    function dataLoop(styleObj, comps) {
-      for(var key in styleObj) {
-        set_layer_props(comps, key, styleObj);
-      }
-    }
-    dataLoop(data[0], [epl_text_vert_a, epl_text_vert_b]);
-    dataLoop(data[1], [epl_text_horiz_a, epl_text_horiz_b]);
+    //alert(data[0]["Title"]["position"]);
+    //alert(data[1]["Classifier2"]["scale"]);
+    //function dataLoop(styleObj, comps) {
+    //  for(var key in styleObj) {
+    //    set_layer_props(comps, key, styleObj);
+    //  }
+    //}
+    //dataLoop(data[0], [epl_text_vert_a, epl_text_vert_b]);
+    //dataLoop(data[1], [epl_text_horiz_a, epl_text_horiz_b]);
+
+    var layersGrp1 = ["Classifier1", "Title", "Subtitle", "Classifier2", "Time"];
+    layersGrp1.map(function(l) {
+      epl_text_vert_a.layer(l).position.setValue(data[0][l]["position"]);
+      epl_text_vert_a.layer(l).scale.setValue(data[0][l]["scale"]);
+      epl_text_horiz_a.layer(l).position.setValue(data[1][l]["position"]);
+      epl_text_horiz_a.layer(l).scale.setValue(data[1][l]["scale"]);
+    });
+
+    var layersGrp2 = ["Day1", "Day2", "Day3", "Ordinal1", "Ordinal2"];
+    layersGrp2.map(function(l) {
+      epl_text_vert_b.layer(l).position.setValue(data[0][l]["position"]);
+      epl_text_vert_b.layer(l).scale.setValue(data[0][l]["scale"]);
+      epl_text_horiz_b.layer(l).position.setValue(data[1][l]["position"]);
+      epl_text_horiz_b.layer(l).scale.setValue(data[1][l]["scale"]);
+    });
 
     set_style_l3d();
   }
@@ -510,6 +548,14 @@ function set_title(data) {
         c.layer("Time").enabled = true;
       }
     }); 
+
+    if (data) {
+      l3d_title.layer("Classifier2").enabled = false;
+      l3d_title.layer("l3d tunein").enabled = false;
+    } else {
+      l3d_title.layer("Classifier2").enabled = true;
+      l3d_title.layer("l3d tunein").enabled = true;
+    }
   }
 
 
@@ -522,13 +568,7 @@ function set_title(data) {
     update_time: function(data) {
       if (typeof(data) === "object") {
         change_time(data);
-      } else if (data) {
-        epl_text_vert_a.layer("Time").opacity.setValue(0);
-        epl_text_horiz_a.layer("Time").opacity.setValue(0);
-      } else {
-        epl_text_vert_a.layer("Time").opacity.setValue(100);
-        epl_text_horiz_a.layer("Time").opacity.setValue(100);
-      } 
+      } else hideTime(data);
     },
     update_days: function(data) { set_days(data); },
     update_classifiers: function(data) { set_classifiers(data); },
@@ -552,6 +592,7 @@ function set_title(data) {
   // Define Model Class
   function Model(data) {
     this.data = data;
+    this.isDataLoaded = false;
   }
 
   Model.prototype.read_data = function(path) {
@@ -559,7 +600,7 @@ function set_title(data) {
     if (f.open("r")) {
       f.encoding = "UTF-8";
       this.data = JSON.parse(f.read());
-      f.close();
+      this.isDataLoaded = f.close();
     }
   };
 
@@ -688,7 +729,8 @@ function set_title(data) {
     styles.read_data("../build/data/epl-style.json");
 
     return {
-      get_epl_styles: function() { return styles.data; }
+      get_epl_styles: function() { return styles.data; },
+      isDataLoaded: styles.isDataLoaded
     };
   })();
 
@@ -1914,7 +1956,9 @@ var ux_controller = (function(ui, time_ctrl, show_model) {
       ui.ui_events.time_list,
       ui.ui_events.half_check,
       ui.ui_events.am_check,
-      ui.ui_events.hideTime
+      ui.ui_events.hideTime,
+      ui.ui_events.addNext,
+      ui.ui_events.pluralizer
     ];
 
     if (is_web) {
@@ -1923,6 +1967,7 @@ var ux_controller = (function(ui, time_ctrl, show_model) {
       days[0].enabled = true;
       ux_days();
       ux_time();
+      ux_modifiers();
     }
   }
 
@@ -1945,8 +1990,11 @@ var ux_controller = (function(ui, time_ctrl, show_model) {
     } else if (!ui.ui_events.addNext.value) {
       ui.ui_events.pluralizer.enabled = true;
     }
-    //addNext: add_next,
-    //pluralizer: pluralize,
+    if (ui.ui_events.pluralizer.value) {
+      ui.ui_events.addNext.enabled = false;
+    } else if (!ui.ui_events.pluralizer.value) {
+      ui.ui_events.addNext.enabled = true;
+    }
   }
 
   return {
@@ -1986,7 +2034,7 @@ var event_controller = (function(ui, title_ctrl, version_ctrl, time_ctrl, days_c
   ui.ui_events.show_list.addEventListener("change", function(e) { 
     var show = ui.get_show().toString();
     title_ctrl.set_title([show, ui.get_version()]);
-    style_ctrl.set_style();
+    style_ctrl.set_style(0);
     ux.title(show);
   });
   ui.ui_events.epi_ver.onClick = function() { version_ctrl.set_version([ui.get_show().toString(), ui.get_version()]); };
@@ -2007,7 +2055,7 @@ var event_controller = (function(ui, title_ctrl, version_ctrl, time_ctrl, days_c
   ui.ui_events.days.addEventListener("change", function(e) {
     ux.days();
     days_ctrl.set_days(ui.get_days());
-    style_ctrl.set_style();
+    style_ctrl.set_style(0);
   });
   ui.ui_events.addNext.onClick = function() {
     ux.modifiers();
@@ -2055,7 +2103,7 @@ var event_controller = (function(ui, title_ctrl, version_ctrl, time_ctrl, days_c
 
 
 
-var controller = (function(ui, show_model, dom, title_ctrl, class_ctrl, style_ctrl, time_ctrl, web) {
+var controller = (function(ui, show_model, style_model, dom, title_ctrl, class_ctrl, style_ctrl, time_ctrl, web) {
   function default_state(default_show, day, defaultTime) {
     var days = ui.get_days();
     days[0].selection = day;
@@ -2066,15 +2114,21 @@ var controller = (function(ui, show_model, dom, title_ctrl, class_ctrl, style_ct
     time_ctrl.set_time(false);
     ui.ui_events.time_list.selection = defaultTime;
     web.set_webMode(false);
-    style_ctrl.set_style();
+    style_ctrl.set_style(0);
   }
 
   return {
     init: function() {
+      var dataReady = false;
+      while (!dataReady) {
+        if (style_model.isDataLoaded) {
+            dataReady = true;
+        }
+      }
       default_state("BBD", 6, 8);
     }
   };
-})(ui_view, show_model, dom_view, title_controller, classifier_controller, style_controller, time_controller, web_controller);
+})(ui_view, show_model, style_model, dom_view, title_controller, classifier_controller, style_controller, time_controller, web_controller);
 
 controller.init();
 } // End Main

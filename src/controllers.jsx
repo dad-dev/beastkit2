@@ -80,7 +80,9 @@ var ux_controller = (function(ui, time_ctrl, show_model) {
       ui.ui_events.time_list,
       ui.ui_events.half_check,
       ui.ui_events.am_check,
-      ui.ui_events.hideTime
+      ui.ui_events.hideTime,
+      ui.ui_events.addNext,
+      ui.ui_events.pluralizer
     ];
 
     if (is_web) {
@@ -89,6 +91,7 @@ var ux_controller = (function(ui, time_ctrl, show_model) {
       days[0].enabled = true;
       ux_days();
       ux_time();
+      ux_modifiers();
     }
   }
 
@@ -111,8 +114,11 @@ var ux_controller = (function(ui, time_ctrl, show_model) {
     } else if (!ui.ui_events.addNext.value) {
       ui.ui_events.pluralizer.enabled = true;
     }
-    //addNext: add_next,
-    //pluralizer: pluralize,
+    if (ui.ui_events.pluralizer.value) {
+      ui.ui_events.addNext.enabled = false;
+    } else if (!ui.ui_events.pluralizer.value) {
+      ui.ui_events.addNext.enabled = true;
+    }
   }
 
   return {
@@ -152,7 +158,7 @@ var event_controller = (function(ui, title_ctrl, version_ctrl, time_ctrl, days_c
   ui.ui_events.show_list.addEventListener("change", function(e) { 
     var show = ui.get_show().toString();
     title_ctrl.set_title([show, ui.get_version()]);
-    style_ctrl.set_style();
+    style_ctrl.set_style(0);
     ux.title(show);
   });
   ui.ui_events.epi_ver.onClick = function() { version_ctrl.set_version([ui.get_show().toString(), ui.get_version()]); };
@@ -173,7 +179,7 @@ var event_controller = (function(ui, title_ctrl, version_ctrl, time_ctrl, days_c
   ui.ui_events.days.addEventListener("change", function(e) {
     ux.days();
     days_ctrl.set_days(ui.get_days());
-    style_ctrl.set_style();
+    style_ctrl.set_style(0);
   });
   ui.ui_events.addNext.onClick = function() {
     ux.modifiers();
@@ -221,7 +227,7 @@ var event_controller = (function(ui, title_ctrl, version_ctrl, time_ctrl, days_c
 
 
 
-var controller = (function(ui, show_model, dom, title_ctrl, class_ctrl, style_ctrl, time_ctrl, web) {
+var controller = (function(ui, show_model, style_model, dom, title_ctrl, class_ctrl, style_ctrl, time_ctrl, web) {
   function default_state(default_show, day, defaultTime) {
     var days = ui.get_days();
     days[0].selection = day;
@@ -232,14 +238,20 @@ var controller = (function(ui, show_model, dom, title_ctrl, class_ctrl, style_ct
     time_ctrl.set_time(false);
     ui.ui_events.time_list.selection = defaultTime;
     web.set_webMode(false);
-    style_ctrl.set_style();
+    style_ctrl.set_style(0);
   }
 
   return {
     init: function() {
+      var dataReady = false;
+      while (!dataReady) {
+        if (style_model.isDataLoaded) {
+            dataReady = true;
+        }
+      }
       default_state("BBD", 6, 8);
     }
   };
-})(ui_view, show_model, dom_view, title_controller, classifier_controller, style_controller, time_controller, web_controller);
+})(ui_view, show_model, style_model, dom_view, title_controller, classifier_controller, style_controller, time_controller, web_controller);
 
 controller.init();

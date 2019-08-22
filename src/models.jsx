@@ -12,6 +12,7 @@
   // Define Model Class
   function Model(data) {
     this.data = data;
+    this.isDataLoaded = false;
   }
 
   Model.prototype.read_data = function(path) {
@@ -19,7 +20,7 @@
     if (f.open("r")) {
       f.encoding = "UTF-8";
       this.data = JSON.parse(f.read());
-      f.close();
+      this.isDataLoaded = f.close();
     }
   };
 
@@ -148,7 +149,8 @@
     styles.read_data("../build/data/epl-style.json");
 
     return {
-      get_epl_styles: function() { return styles.data; }
+      get_epl_styles: function() { return styles.data; },
+      isDataLoaded: styles.isDataLoaded
     };
   })();
 
