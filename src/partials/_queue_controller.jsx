@@ -168,6 +168,10 @@ var queue_controller = (function(ui, class_model, tunein_model, dom) {
     } else if (/^l3d/i.test(theComp.name)) {
       product = "l3d";
       job_name = "L3D_";
+    } else if (/^bug/i.test(theComp.name)) {
+      product = "bug";
+      job_name = "BUG_" + ui.get_show().toString();
+      return;
     }
     show = ui.get_show().toString();
     job_name += show + "_";

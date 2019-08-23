@@ -211,6 +211,10 @@ var dom_view = (function(utils) {
     if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "l3d tunein") {
       var l3d_tunein = app.project.items[i];
     }
+    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "Bug master") {
+      var bug = app.project.items[i];
+      valid_comps_to_render.push(bug);
+    }
   }
 
 
@@ -1805,6 +1809,10 @@ var queue_controller = (function(ui, class_model, tunein_model, dom) {
     } else if (/^l3d/i.test(theComp.name)) {
       product = "l3d";
       job_name = "L3D_";
+    } else if (/^bug/i.test(theComp.name)) {
+      product = "bug";
+      job_name = "BUG_" + ui.get_show().toString();
+      return;
     }
     show = ui.get_show().toString();
     job_name += show + "_";

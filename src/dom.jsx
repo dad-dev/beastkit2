@@ -106,6 +106,10 @@ var dom_view = (function(utils) {
     if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "l3d tunein") {
       var l3d_tunein = app.project.items[i];
     }
+    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "Bug master") {
+      var bug = app.project.items[i];
+      valid_comps_to_render.push(bug);
+    }
   }
 
 
