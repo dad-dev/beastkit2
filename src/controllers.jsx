@@ -133,7 +133,63 @@ var ux_controller = (function(ui, time_ctrl, show_model) {
 })(ui_view, time_controller, show_model);
 
 
-var event_controller = (function(ui, title_ctrl, version_ctrl, time_ctrl, days_ctrl, class_ctrl, style_ctrl, web, dom, queue, ux) {
+var modifier_controller = (function(dom, ui, days_ctrl) {
+  var render = function(data) {
+    days_ctrl.set_days([ui.get_days(), data]);
+  };
+
+  var service = {
+    getData: function(payload) {
+      var days = ui.get_days();
+      if (ui.ui_events.addNext.value) return "next";
+      if (ui.ui_events.pluralizer.value) {
+
+        if (days[2].selection.index > 0 && days[2].selection.index < 8) {
+          return "sss";
+        } else if (days[1].selection.index > 0 && days[1].selection.index < 8) {
+          return "ss";
+        } else return "s";
+
+      }
+
+      return 0;
+    }
+  };
+
+  var modifier_machine = new Machine("idle");
+
+  modifier_machine.transitions['idle'] = {
+    select: function(payload) {
+      modifier_machine.changeStateTo('fetching');
+      var data = service.getData(payload);
+      try {
+        modifier_machine.dispatch('success', data);
+      } catch(error) {
+        modifier_machine.dispatch('failure', error);
+      }
+    }
+  };
+
+  modifier_machine.transitions['fetching'] = {
+    success: function(data) {
+      render(data);
+      modifier_machine.changeStateTo("idle");
+    },
+    failure: function(error) {
+      alert("Modifier Machine:  " + error.toString());
+      modifier_machine.changeStateTo('error');
+    }
+  };
+
+  return {
+    set_modifier: function(payload) {
+      modifier_machine.dispatch('select', payload);
+    }
+  };
+})(dom_view, ui_view, days_controller);
+
+
+var event_controller = (function(ui, title_ctrl, version_ctrl, time_ctrl, days_ctrl, class_ctrl, style_ctrl, web, dom, queue, ux, mod) {
   Number.isInteger = Number.isInteger || function(value) {
     return typeof value === 'number' &&
       isFinite(value) &&
@@ -178,16 +234,18 @@ var event_controller = (function(ui, title_ctrl, version_ctrl, time_ctrl, days_c
   };
   ui.ui_events.days.addEventListener("change", function(e) {
     ux.days();
-    days_ctrl.set_days(ui.get_days());
+    days_ctrl.set_days([ui.get_days(), 0]);
     style_ctrl.set_style(0);
   });
   ui.ui_events.addNext.onClick = function() {
     ux.modifiers();
-    //if (ui.ui_events.addNext.enabled) tune_in_ctrl.set_modifiers(ui.ui_events.addNext, ui.ui_events.pluralizer);
+    mod.set_modifier("next");
+    style_ctrl.set_style(0);
   };
   ui.ui_events.pluralizer.onClick = function() {
     ux.modifiers();
-    //if (ui.ui_events.pluralizer.enabled) tune_in_ctrl.set_modifiers(ui.ui_events.pluralizer, ui.ui_events.addNext);
+    mod.set_modifier("pluralize");
+    style_ctrl.set_style(0);
   };
   ui.ui_events.web_mode.onClick = function() {
     var is_web = ui.ui_events.web_mode.value;
@@ -222,7 +280,7 @@ var event_controller = (function(ui, title_ctrl, version_ctrl, time_ctrl, days_c
       queue.send_to_queue("");
     } 
   };
-})(ui_view, title_controller, version_controller, time_controller, days_controller, classifier_controller, style_controller, web_controller, dom_view, queue_controller, ux_controller);
+})(ui_view, title_controller, version_controller, time_controller, days_controller, classifier_controller, style_controller, web_controller, dom_view, queue_controller, ux_controller, modifier_controller);
 
 
 

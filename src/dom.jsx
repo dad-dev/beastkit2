@@ -42,18 +42,12 @@ var dom_view = (function(utils) {
     if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "Horizontal 5sec submaster") {
       var epl_5s_horiz_sub = app.project.items[i];
     }
-    //if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "epl text vert") {
-    //var epl_text_vert = app.project.items[i];
-    //}
     if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "epl text vert move block") {
       var epl_text_vert_a = app.project.items[i];
     }
     if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "epl text vert move day") {
       var epl_text_vert_b = app.project.items[i];
     }
-    //if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "epl text horiz") {
-    //  var epl_text_horiz = app.project.items[i];
-    //}
     if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "epl text horiz move block") {
       var epl_text_horiz_a = app.project.items[i];
     }
@@ -153,7 +147,7 @@ var dom_view = (function(utils) {
     prop.setValuesAtTimes(animation[count]['times'], animation[count]['values']);
   }
 
-  function set_days(data) {
+  function set_days(data, modifier) {
     var count = 0;
     for (var key in data) {
       if (key === "Day1" && data[key] === "") {
@@ -176,22 +170,6 @@ var dom_view = (function(utils) {
     }
   }
 
-    /*
-  function set_layer_props(c, l, data) {
-    // Error at launch, data undefined.
-    try {
-      c[0].layer(l).position.setValue(data[l]["position"]);
-      c[0].layer(l).scale.setValue(data[l]["scale"]);
-      //c[0].layer(l).opacity.setValue(data[l]["opacity"]);
-    } catch(err) {
-      c[1].layer(l).position.setValue(data[l]["position"]);
-      c[1].layer(l).scale.setValue(data[l]["scale"]);
-      //c[1].layer(l).opacity.setValue(data[l]["opacity"]);
-
-    }
-  }
-  */
-
 
   function set_style_l3d() {
     var day_x = Math.max(utils.measure_x(l3d_title.layer("Classifier1"), 51)[0], utils.measure_x(l3d_title.layer("Show"), 51)[0]);
@@ -209,16 +187,6 @@ var dom_view = (function(utils) {
   }
 
   function set_style(data) {
-    //alert(data[0]["Title"]["position"]);
-    //alert(data[1]["Classifier2"]["scale"]);
-    //function dataLoop(styleObj, comps) {
-    //  for(var key in styleObj) {
-    //    set_layer_props(comps, key, styleObj);
-    //  }
-    //}
-    //dataLoop(data[0], [epl_text_vert_a, epl_text_vert_b]);
-    //dataLoop(data[1], [epl_text_horiz_a, epl_text_horiz_b]);
-
     var layersGrp1 = ["Classifier1", "Title", "Subtitle", "Classifier2", "Time"];
     layersGrp1.map(function(l) {
       epl_text_vert_a.layer(l).position.setValue(data[0][l]["position"]);
@@ -272,7 +240,7 @@ var dom_view = (function(utils) {
         change_time(data);
       } else hideTime(data);
     },
-    update_days: function(data) { set_days(data); },
+    update_days: function(data, modifier) { set_days(data, modifier); },
     update_classifiers: function(data) { set_classifiers(data); },
     update_style: function(data) { set_style(data); },
     update_web: function(data) { set_web(data); },

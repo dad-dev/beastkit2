@@ -147,18 +147,12 @@ var dom_view = (function(utils) {
     if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "Horizontal 5sec submaster") {
       var epl_5s_horiz_sub = app.project.items[i];
     }
-    //if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "epl text vert") {
-    //var epl_text_vert = app.project.items[i];
-    //}
     if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "epl text vert move block") {
       var epl_text_vert_a = app.project.items[i];
     }
     if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "epl text vert move day") {
       var epl_text_vert_b = app.project.items[i];
     }
-    //if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "epl text horiz") {
-    //  var epl_text_horiz = app.project.items[i];
-    //}
     if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "epl text horiz move block") {
       var epl_text_horiz_a = app.project.items[i];
     }
@@ -451,7 +445,7 @@ function hideTime(data) {
     prop.setValuesAtTimes(animation[count]['times'], animation[count]['values']);
   }
 
-  function set_days(data) {
+  function set_days(data, modifier) {
     var count = 0;
     for (var key in data) {
       if (key === "Day1" && data[key] === "") {
@@ -474,22 +468,6 @@ function hideTime(data) {
     }
   }
 
-    /*
-  function set_layer_props(c, l, data) {
-    // Error at launch, data undefined.
-    try {
-      c[0].layer(l).position.setValue(data[l]["position"]);
-      c[0].layer(l).scale.setValue(data[l]["scale"]);
-      //c[0].layer(l).opacity.setValue(data[l]["opacity"]);
-    } catch(err) {
-      c[1].layer(l).position.setValue(data[l]["position"]);
-      c[1].layer(l).scale.setValue(data[l]["scale"]);
-      //c[1].layer(l).opacity.setValue(data[l]["opacity"]);
-
-    }
-  }
-  */
-
 
   function set_style_l3d() {
     var day_x = Math.max(utils.measure_x(l3d_title.layer("Classifier1"), 51)[0], utils.measure_x(l3d_title.layer("Show"), 51)[0]);
@@ -507,16 +485,6 @@ function hideTime(data) {
   }
 
   function set_style(data) {
-    //alert(data[0]["Title"]["position"]);
-    //alert(data[1]["Classifier2"]["scale"]);
-    //function dataLoop(styleObj, comps) {
-    //  for(var key in styleObj) {
-    //    set_layer_props(comps, key, styleObj);
-    //  }
-    //}
-    //dataLoop(data[0], [epl_text_vert_a, epl_text_vert_b]);
-    //dataLoop(data[1], [epl_text_horiz_a, epl_text_horiz_b]);
-
     var layersGrp1 = ["Classifier1", "Title", "Subtitle", "Classifier2", "Time"];
     layersGrp1.map(function(l) {
       epl_text_vert_a.layer(l).position.setValue(data[0][l]["position"]);
@@ -570,7 +538,7 @@ function hideTime(data) {
         change_time(data);
       } else hideTime(data);
     },
-    update_days: function(data) { set_days(data); },
+    update_days: function(data, modifier) { set_days(data, modifier); },
     update_classifiers: function(data) { set_classifiers(data); },
     update_style: function(data) { set_style(data); },
     update_web: function(data) { set_web(data); },
@@ -1304,24 +1272,44 @@ var time_controller = (function(ui, dom) {
 })(ui_view, dom_view);
 
 var days_controller = (function(ui, dom) {
-  var render = function(data) { dom.update_days(data); };
+  var render = function(data) { 
+    dom.update_days(data, 0);
+  };
 
-  function set_modifiers(day) {
-
+  function set_modifiers(days, mod) {
+    if (mod == "next") {
+      days[0] = "NEXT " + days[0];
+      return days;
+    } else if (mod == "s") {
+      days[0] += "S";
+      return days;
+    } else if (mod == "ss") {
+      days[0] +="S";
+      days[1] +="S";
+      return days;
+    } else if (mod == "sss") {
+      days[0] +="S";
+      days[1] +="S";
+      days[2] +="S";
+      return days;
+    } else return days;
   }
 
   var service = {
     getData: function(payload) {
-      var dayList = payload.map(function(day) {
+      var dayList = payload[0].map(function(day) {
         if (day.selection.index > 0) return day.selection.toString().toUpperCase();
         else return "";
       });
+
+      dayList = set_modifiers(dayList, payload[1]);
 
       if (dayList[2] !== "" && dayList[1] !== "") {
         dayList[0] += ",";
         dayList[2] = "& " + dayList[2];
       } else if (dayList[1] !== "" && dayList[2] === "") {
-        dayList[1] = "& " + dayList[1]      }
+        dayList[1] = "& " + dayList[1];
+      }
 
       return {
         "Day1": dayList[0],
@@ -1681,7 +1669,11 @@ var queue_controller = (function(ui, class_model, tunein_model, dom) {
       else return get_class_code("tune-in", ui.ui_events.tunein_classifier);
     })();
     var bump = get_class_code("bump", ui.ui_events.bump_msg);
-    if (product === "epl") return [show, tunein];
+    if (product === "epl" || product === "l3d") {
+      return [show, tunein];
+    } else {
+      return ""; 
+    } 
   };
 
 
@@ -1810,9 +1802,17 @@ var queue_controller = (function(ui, class_model, tunein_model, dom) {
     if (/^epl/i.test(theComp.name)) {
       product = "epl";
       build_epl_name(theComp.name);
-    } 
+    } else if (/^l3d/i.test(theComp.name)) {
+      product = "l3d";
+      job_name = "L3D_";
+    }
+    show = ui.get_show().toString();
     job_name += show + "_";
-    if (product === "epl") job_name += build_talent_name();
+
+    if (product === "epl") {
+      job_name += build_talent_name();
+    } 
+
     job_name += build_classifiers(product);
     if (webMode) {
       job_name += "WEB";
@@ -1891,7 +1891,7 @@ var queue_controller = (function(ui, class_model, tunein_model, dom) {
 
   return {
     send_to_queue: function(payload) {
-      queue_machine.dispatch('select', payload);
+      queue_machine.dispatch('select', payload); // payload == job number
     }
   };
 })(ui_view, classifier_model, tunein_model, dom_view);
@@ -2009,7 +2009,63 @@ var ux_controller = (function(ui, time_ctrl, show_model) {
 })(ui_view, time_controller, show_model);
 
 
-var event_controller = (function(ui, title_ctrl, version_ctrl, time_ctrl, days_ctrl, class_ctrl, style_ctrl, web, dom, queue, ux) {
+var modifier_controller = (function(dom, ui, days_ctrl) {
+  var render = function(data) {
+    days_ctrl.set_days([ui.get_days(), data]);
+  };
+
+  var service = {
+    getData: function(payload) {
+      var days = ui.get_days();
+      if (ui.ui_events.addNext.value) return "next";
+      if (ui.ui_events.pluralizer.value) {
+
+        if (days[2].selection.index > 0 && days[2].selection.index < 8) {
+          return "sss";
+        } else if (days[1].selection.index > 0 && days[1].selection.index < 8) {
+          return "ss";
+        } else return "s";
+
+      }
+
+      return 0;
+    }
+  };
+
+  var modifier_machine = new Machine("idle");
+
+  modifier_machine.transitions['idle'] = {
+    select: function(payload) {
+      modifier_machine.changeStateTo('fetching');
+      var data = service.getData(payload);
+      try {
+        modifier_machine.dispatch('success', data);
+      } catch(error) {
+        modifier_machine.dispatch('failure', error);
+      }
+    }
+  };
+
+  modifier_machine.transitions['fetching'] = {
+    success: function(data) {
+      render(data);
+      modifier_machine.changeStateTo("idle");
+    },
+    failure: function(error) {
+      alert("Modifier Machine:  " + error.toString());
+      modifier_machine.changeStateTo('error');
+    }
+  };
+
+  return {
+    set_modifier: function(payload) {
+      modifier_machine.dispatch('select', payload);
+    }
+  };
+})(dom_view, ui_view, days_controller);
+
+
+var event_controller = (function(ui, title_ctrl, version_ctrl, time_ctrl, days_ctrl, class_ctrl, style_ctrl, web, dom, queue, ux, mod) {
   Number.isInteger = Number.isInteger || function(value) {
     return typeof value === 'number' &&
       isFinite(value) &&
@@ -2054,16 +2110,18 @@ var event_controller = (function(ui, title_ctrl, version_ctrl, time_ctrl, days_c
   };
   ui.ui_events.days.addEventListener("change", function(e) {
     ux.days();
-    days_ctrl.set_days(ui.get_days());
+    days_ctrl.set_days([ui.get_days(), 0]);
     style_ctrl.set_style(0);
   });
   ui.ui_events.addNext.onClick = function() {
     ux.modifiers();
-    //if (ui.ui_events.addNext.enabled) tune_in_ctrl.set_modifiers(ui.ui_events.addNext, ui.ui_events.pluralizer);
+    mod.set_modifier("next");
+    style_ctrl.set_style(0);
   };
   ui.ui_events.pluralizer.onClick = function() {
     ux.modifiers();
-    //if (ui.ui_events.pluralizer.enabled) tune_in_ctrl.set_modifiers(ui.ui_events.pluralizer, ui.ui_events.addNext);
+    mod.set_modifier("pluralize");
+    style_ctrl.set_style(0);
   };
   ui.ui_events.web_mode.onClick = function() {
     var is_web = ui.ui_events.web_mode.value;
@@ -2098,7 +2156,7 @@ var event_controller = (function(ui, title_ctrl, version_ctrl, time_ctrl, days_c
       queue.send_to_queue("");
     } 
   };
-})(ui_view, title_controller, version_controller, time_controller, days_controller, classifier_controller, style_controller, web_controller, dom_view, queue_controller, ux_controller);
+})(ui_view, title_controller, version_controller, time_controller, days_controller, classifier_controller, style_controller, web_controller, dom_view, queue_controller, ux_controller, modifier_controller);
 
 
 

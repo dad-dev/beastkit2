@@ -1,23 +1,43 @@
 
 var days_controller = (function(ui, dom) {
-  var render = function(data) { dom.update_days(data); };
+  var render = function(data) { 
+    dom.update_days(data, 0);
+  };
 
-  function set_modifiers(day) {
-
+  function set_modifiers(days, mod) {
+    if (mod == "next") {
+      days[0] = "NEXT " + days[0];
+      return days;
+    } else if (mod == "s") {
+      days[0] += "S";
+      return days;
+    } else if (mod == "ss") {
+      days[0] +="S";
+      days[1] +="S";
+      return days;
+    } else if (mod == "sss") {
+      days[0] +="S";
+      days[1] +="S";
+      days[2] +="S";
+      return days;
+    } else return days;
   }
 
   var service = {
     getData: function(payload) {
-      var dayList = payload.map(function(day) {
+      var dayList = payload[0].map(function(day) {
         if (day.selection.index > 0) return day.selection.toString().toUpperCase();
         else return "";
       });
+
+      dayList = set_modifiers(dayList, payload[1]);
 
       if (dayList[2] !== "" && dayList[1] !== "") {
         dayList[0] += ",";
         dayList[2] = "& " + dayList[2];
       } else if (dayList[1] !== "" && dayList[2] === "") {
-        dayList[1] = "& " + dayList[1]      }
+        dayList[1] = "& " + dayList[1];
+      }
 
       return {
         "Day1": dayList[0],

@@ -32,7 +32,11 @@ var queue_controller = (function(ui, class_model, tunein_model, dom) {
       else return get_class_code("tune-in", ui.ui_events.tunein_classifier);
     })();
     var bump = get_class_code("bump", ui.ui_events.bump_msg);
-    if (product === "epl") return [show, tunein];
+    if (product === "epl" || product === "l3d") {
+      return [show, tunein];
+    } else {
+      return ""; 
+    } 
   };
 
 
@@ -161,9 +165,17 @@ var queue_controller = (function(ui, class_model, tunein_model, dom) {
     if (/^epl/i.test(theComp.name)) {
       product = "epl";
       build_epl_name(theComp.name);
-    } 
+    } else if (/^l3d/i.test(theComp.name)) {
+      product = "l3d";
+      job_name = "L3D_";
+    }
+    show = ui.get_show().toString();
     job_name += show + "_";
-    if (product === "epl") job_name += build_talent_name();
+
+    if (product === "epl") {
+      job_name += build_talent_name();
+    } 
+
     job_name += build_classifiers(product);
     if (webMode) {
       job_name += "WEB";
@@ -242,7 +254,7 @@ var queue_controller = (function(ui, class_model, tunein_model, dom) {
 
   return {
     send_to_queue: function(payload) {
-      queue_machine.dispatch('select', payload);
+      queue_machine.dispatch('select', payload); // payload == job number
     }
   };
 })(ui_view, classifier_model, tunein_model, dom_view);
