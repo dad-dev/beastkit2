@@ -110,6 +110,13 @@ var dom_view = (function(utils) {
       var bug = app.project.items[i];
       valid_comps_to_render.push(bug);
     }
+    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "TRN Horiz master") {
+      var trnH_master = app.project.items[i];
+      valid_comps_to_render.push(bug);
+    }
+    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "TRN Horiz submaster") {
+      var trnH_sub = app.project.items[i];
+    }
   }
 
 
