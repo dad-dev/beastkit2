@@ -71,6 +71,10 @@ var ux_controller = (function(ui, time_ctrl, show_model) {
     }
   }
 
+  function ux_dates() {
+
+  }
+
   function ux_web(is_web) {
     var days = ui.get_days();
     var components = [
@@ -124,6 +128,7 @@ var ux_controller = (function(ui, time_ctrl, show_model) {
   return {
     title: function(show) { ux_title(show); },
     days: function() { ux_days(); },
+    dates: function() { ux.dates(); },
     time: function() { ux_time(); },
     web: function(is_web) { ux_web(is_web); },
     classifier: function() { ux_class(); },

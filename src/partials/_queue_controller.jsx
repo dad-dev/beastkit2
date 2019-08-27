@@ -157,6 +157,15 @@ var queue_controller = (function(ui, class_model, tunein_model, dom) {
     job_name += (/\d{1,}/g).exec(comp_name)[0] + "_";
   }
 
+  function build_trn_name(compName) {
+    var trnVer = '';
+    if (/H/.test(compName)) {
+      trnVer = "H_";
+    } else trnVer = "V_";
+    trnVer += ui.get_show().toString();
+    return trnVer;
+  }
+
   function build_job_name(theComp) {
     var product = "";
     var webMode = ui.ui_events.web_mode.value;
@@ -172,7 +181,12 @@ var queue_controller = (function(ui, class_model, tunein_model, dom) {
       product = "bug";
       job_name = "BUG_" + ui.get_show().toString();
       return;
+    } else if (/^trn/i.test(theComp.name)) {
+      product = "trn";
+      job_name = "TRN_" + build_trn_name(theComp.name);
+      return;
     }
+
     show = ui.get_show().toString();
     job_name += show + "_";
 

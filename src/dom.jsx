@@ -112,10 +112,17 @@ var dom_view = (function(utils) {
     }
     if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "TRN Horiz master") {
       var trnH_master = app.project.items[i];
-      valid_comps_to_render.push(bug);
+      valid_comps_to_render.push(trnH_master);
     }
     if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "TRN Horiz submaster") {
       var trnH_sub = app.project.items[i];
+    }
+    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "TRN Vert master") {
+      var trnV_master = app.project.items[i];
+      valid_comps_to_render.push(trnV_master);
+    }
+    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "TRN Vert submaster") {
+      var trnV_sub = app.project.items[i];
     }
   }
 

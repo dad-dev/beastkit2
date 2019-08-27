@@ -215,6 +215,20 @@ var dom_view = (function(utils) {
       var bug = app.project.items[i];
       valid_comps_to_render.push(bug);
     }
+    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "TRN Horiz master") {
+      var trnH_master = app.project.items[i];
+      valid_comps_to_render.push(trnH_master);
+    }
+    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "TRN Horiz submaster") {
+      var trnH_sub = app.project.items[i];
+    }
+    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "TRN Vert master") {
+      var trnV_master = app.project.items[i];
+      valid_comps_to_render.push(trnV_master);
+    }
+    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "TRN Vert submaster") {
+      var trnV_sub = app.project.items[i];
+    }
   }
 
 
@@ -331,6 +345,11 @@ function set_title(data) {
     l3d_title.layer("Show").property("Effects").property("Fill").property("Color").setValue(colors[0]);
   }
 
+  function set_colors_trn(colors) {
+    set_color_on_fill(trnH_sub, "Wipe", colors[0]);
+    set_color_on_fill(trnV_sub, "Wipe", colors[0]);
+  }
+
   function set_colors(colors, version) {
     var colorversion = set_color_version(colors, version);
     // Endplates
@@ -342,6 +361,9 @@ function set_title(data) {
 
     // Lower Third
     set_colors_l3d(colors);
+
+    // Transitions
+    set_colors_trn(colors);
   }
 
   //////////// End change colors
@@ -1798,6 +1820,15 @@ var queue_controller = (function(ui, class_model, tunein_model, dom) {
     job_name += (/\d{1,}/g).exec(comp_name)[0] + "_";
   }
 
+  function build_trn_name(compName) {
+    var trnVer = '';
+    if (/H/.test(compName)) {
+      trnVer = "H_";
+    } else trnVer = "V_";
+    trnVer += ui.get_show().toString();
+    return trnVer;
+  }
+
   function build_job_name(theComp) {
     var product = "";
     var webMode = ui.ui_events.web_mode.value;
@@ -1813,7 +1844,12 @@ var queue_controller = (function(ui, class_model, tunein_model, dom) {
       product = "bug";
       job_name = "BUG_" + ui.get_show().toString();
       return;
+    } else if (/^trn/i.test(theComp.name)) {
+      product = "trn";
+      job_name = "TRN_" + build_trn_name(theComp.name);
+      return;
     }
+
     show = ui.get_show().toString();
     job_name += show + "_";
 
@@ -1955,6 +1991,10 @@ var ux_controller = (function(ui, time_ctrl, show_model) {
     }
   }
 
+  function ux_dates() {
+
+  }
+
   function ux_web(is_web) {
     var days = ui.get_days();
     var components = [
@@ -2008,6 +2048,7 @@ var ux_controller = (function(ui, time_ctrl, show_model) {
   return {
     title: function(show) { ux_title(show); },
     days: function() { ux_days(); },
+    dates: function() { ux.dates(); },
     time: function() { ux_time(); },
     web: function(is_web) { ux_web(is_web); },
     classifier: function() { ux_class(); },

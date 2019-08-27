@@ -83,6 +83,11 @@
     l3d_title.layer("Show").property("Effects").property("Fill").property("Color").setValue(colors[0]);
   }
 
+  function set_colors_trn(colors) {
+    set_color_on_fill(trnH_sub, "Wipe", colors[0]);
+    set_color_on_fill(trnV_sub, "Wipe", colors[0]);
+  }
+
   function set_colors(colors, version) {
     var colorversion = set_color_version(colors, version);
     // Endplates
@@ -94,6 +99,9 @@
 
     // Lower Third
     set_colors_l3d(colors);
+
+    // Transitions
+    set_colors_trn(colors);
   }
 
   //////////// End change colors
