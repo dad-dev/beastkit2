@@ -215,19 +215,30 @@ var dom_view = (function(utils) {
       var bug = app.project.items[i];
       valid_comps_to_render.push(bug);
     }
+    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "TRN Talent Horiz master") {
+      var trnH_tal_master = app.project.items[i];
+      valid_comps_to_render.push(trnH_tal_master);
+    }
+    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "TRN Talent Horiz submaster") {
+      var trnH_tal_sub = app.project.items[i];
+    }
+    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "TRN Talent Vert master") {
+      var trnV_tal_master = app.project.items[i];
+      valid_comps_to_render.push(trnV_tal_master);
+    }
+    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "TRN Talent Vert submaster") {
+      var trnV_tal_sub = app.project.items[i];
+    }
     if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "TRN Horiz master") {
       var trnH_master = app.project.items[i];
       valid_comps_to_render.push(trnH_master);
-    }
-    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "TRN Horiz submaster") {
-      var trnH_sub = app.project.items[i];
     }
     if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "TRN Vert master") {
       var trnV_master = app.project.items[i];
       valid_comps_to_render.push(trnV_master);
     }
-    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "TRN Vert submaster") {
-      var trnV_sub = app.project.items[i];
+    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "TRN Logo element") {
+      var trn_logo = app.project.items[i];
     }
   }
 
@@ -346,8 +357,9 @@ function set_title(data) {
   }
 
   function set_colors_trn(colors) {
-    set_color_on_fill(trnH_sub, "Wipe", colors[0]);
-    set_color_on_fill(trnV_sub, "Wipe", colors[0]);
+    set_color_on_fill(trnH_tal_sub, "Wipe", colors[0]);
+    set_color_on_fill(trnV_tal_sub, "Wipe", colors[0]);
+    set_color_on_gradient(trn_logo, "BG", colors[1], colors[0]);
   }
 
   function set_colors(colors, version) {
@@ -1820,11 +1832,17 @@ var queue_controller = (function(ui, class_model, tunein_model, dom) {
     job_name += (/\d{1,}/g).exec(comp_name)[0] + "_";
   }
 
+  function build_trn_talent(compName) {
+    if (/Talent/i.test(compName)) {
+      return "TAL_";
+    } else return "";
+  }
+
   function build_trn_name(compName) {
-    var trnVer = '';
+    var trnVer = build_trn_talent(compName);
     if (/H/.test(compName)) {
-      trnVer = "H_";
-    } else trnVer = "V_";
+      trnVer += "H_";
+    } else trnVer += "V_";
     trnVer += ui.get_show().toString();
     return trnVer;
   }

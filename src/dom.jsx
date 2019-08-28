@@ -110,19 +110,30 @@ var dom_view = (function(utils) {
       var bug = app.project.items[i];
       valid_comps_to_render.push(bug);
     }
+    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "TRN Talent Horiz master") {
+      var trnH_tal_master = app.project.items[i];
+      valid_comps_to_render.push(trnH_tal_master);
+    }
+    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "TRN Talent Horiz submaster") {
+      var trnH_tal_sub = app.project.items[i];
+    }
+    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "TRN Talent Vert master") {
+      var trnV_tal_master = app.project.items[i];
+      valid_comps_to_render.push(trnV_tal_master);
+    }
+    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "TRN Talent Vert submaster") {
+      var trnV_tal_sub = app.project.items[i];
+    }
     if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "TRN Horiz master") {
       var trnH_master = app.project.items[i];
       valid_comps_to_render.push(trnH_master);
-    }
-    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "TRN Horiz submaster") {
-      var trnH_sub = app.project.items[i];
     }
     if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "TRN Vert master") {
       var trnV_master = app.project.items[i];
       valid_comps_to_render.push(trnV_master);
     }
-    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "TRN Vert submaster") {
-      var trnV_sub = app.project.items[i];
+    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "TRN Logo element") {
+      var trn_logo = app.project.items[i];
     }
   }
 

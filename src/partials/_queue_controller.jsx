@@ -157,11 +157,17 @@ var queue_controller = (function(ui, class_model, tunein_model, dom) {
     job_name += (/\d{1,}/g).exec(comp_name)[0] + "_";
   }
 
+  function build_trn_talent(compName) {
+    if (/Talent/i.test(compName)) {
+      return "TAL_";
+    } else return "";
+  }
+
   function build_trn_name(compName) {
-    var trnVer = '';
+    var trnVer = build_trn_talent(compName);
     if (/H/.test(compName)) {
-      trnVer = "H_";
-    } else trnVer = "V_";
+      trnVer += "H_";
+    } else trnVer += "V_";
     trnVer += ui.get_show().toString();
     return trnVer;
   }

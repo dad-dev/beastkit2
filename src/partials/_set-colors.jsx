@@ -84,8 +84,9 @@
   }
 
   function set_colors_trn(colors) {
-    set_color_on_fill(trnH_sub, "Wipe", colors[0]);
-    set_color_on_fill(trnV_sub, "Wipe", colors[0]);
+    set_color_on_fill(trnH_tal_sub, "Wipe", colors[0]);
+    set_color_on_fill(trnV_tal_sub, "Wipe", colors[0]);
+    set_color_on_gradient(trn_logo, "BG", colors[1], colors[0]);
   }
 
   function set_colors(colors, version) {
