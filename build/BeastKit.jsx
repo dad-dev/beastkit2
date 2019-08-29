@@ -240,6 +240,16 @@ var dom_view = (function(utils) {
     if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "TRN Logo element") {
       var trn_logo = app.project.items[i];
     }
+    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "COT master") {
+      var cot_master = app.project.items[i];
+      valid_comps_to_render.push(cot_master);
+    }
+    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "COT submaster") {
+      var cot_sub = app.project.items[i];
+    }
+    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "COT Text element") {
+      var cot_text = app.project.items[i];
+    }
   }
 
 
@@ -362,6 +372,11 @@ function set_title(data) {
     set_color_on_gradient(trn_logo, "BG", colors[1], colors[0]);
   }
 
+  function set_colors_cot(colors) {
+    set_color_on_fill(cot_sub, "Wedge", colors[0]);
+    set_color_on_fill(cot_text, "Name", colors[0]);
+  }
+
   function set_colors(colors, version) {
     var colorversion = set_color_version(colors, version);
     // Endplates
@@ -376,6 +391,8 @@ function set_title(data) {
 
     // Transitions
     set_colors_trn(colors);
+
+    set_colors_cot(colors);
   }
 
   //////////// End change colors

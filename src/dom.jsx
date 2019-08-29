@@ -135,6 +135,16 @@ var dom_view = (function(utils) {
     if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "TRN Logo element") {
       var trn_logo = app.project.items[i];
     }
+    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "COT master") {
+      var cot_master = app.project.items[i];
+      valid_comps_to_render.push(cot_master);
+    }
+    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "COT submaster") {
+      var cot_sub = app.project.items[i];
+    }
+    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "COT Text element") {
+      var cot_text = app.project.items[i];
+    }
   }
 
 

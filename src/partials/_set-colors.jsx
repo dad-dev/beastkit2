@@ -89,6 +89,11 @@
     set_color_on_gradient(trn_logo, "BG", colors[1], colors[0]);
   }
 
+  function set_colors_cot(colors) {
+    set_color_on_fill(cot_sub, "Wedge", colors[0]);
+    set_color_on_fill(cot_text, "Name", colors[0]);
+  }
+
   function set_colors(colors, version) {
     var colorversion = set_color_version(colors, version);
     // Endplates
@@ -103,6 +108,8 @@
 
     // Transitions
     set_colors_trn(colors);
+
+    set_colors_cot(colors);
   }
 
   //////////// End change colors
