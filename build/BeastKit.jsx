@@ -581,6 +581,10 @@ function hideTime(data) {
     }
   }
 
+  function set_cot(data) {
+    set_text(cot_text, "Name", data[0]);
+    set_text(cot_text, "Message", data[1]);
+  }
 
   return {
     master_ctrl: masterCtrl,
@@ -597,6 +601,7 @@ function hideTime(data) {
     update_classifiers: function(data) { set_classifiers(data); },
     update_style: function(data) { set_style(data); },
     update_web: function(data) { set_web(data); },
+    update_cot: function(data) { set_cot(data); },
     valid_comps: valid_comps_to_render
   };
 })(utils);
@@ -891,48 +896,66 @@ function hideTime(data) {
     { // Group 3
       var groupThree = appWin.add("group", undefined, "GroupThree");
       groupThree.orientation = "column";
-      groupThree.alignChildren = "fill";
+      //groupThree.alignChildren = "fill";
+      var infoTabs = groupThree.add("tabbedpanel", undefined);
+      infoTabs.minimumSize.height = 200; 
+      infoTabs.minimumSize.width = 234;
+      infoTabs.alignment = ["", "top"];
 
-      var classifierPanel = groupThree.add("panel", undefined, "Classifiers");
-      classifierPanel.alignment = ["", "top"];
-      classifierPanel.minimumSize.width = 234;
+        // Classifier tab
+        var classifierTab = infoTabs.add("tab", undefined, "Classifiers");
+        classifierTab.alignChildren = "fill";
 
-      var show_clas_list = classifiers.get_show_clas_list();
-      var listShowClass = classifierPanel.add("dropdownlist", undefined, show_clas_list);
-      listShowClass.selection = 0;
-      listShowClass.minimumSize.width = 200;
+        var show_clas_list = classifiers.get_show_clas_list();
+        var listShowClass = classifierTab.add("dropdownlist", undefined, show_clas_list);
+        listShowClass.selection = 0;
+        listShowClass.minimumSize.width = 200;
 
-      var listTuneClass = classifierPanel.add("dropdownlist", undefined, classifiers.get_tune_clas_list());
-      listTuneClass.selection = 0;
-      listTuneClass.minimumSize.width = 200;
-
-
-      var spacer_grp = classifierPanel.add("group", undefined, "SpacerGRP");
-      spacer_grp.orientation = "column";
-      spacer_grp.minimumSize.height = 5;
-
-      var custom_label = classifierPanel.add("statictext", undefined, "Custom Tune-in Classifier", "StaticText");
-      custom_label.alignment = "left";
-      var customTuneClass = classifierPanel.add("edittext", undefined);
-      customTuneClass.minimumSize.width = 200;
-
-      var spacer_grp2 = classifierPanel.add("group", undefined, "SpacerGRP");
-      spacer_grp2.orientation = "column";
-      spacer_grp2.minimumSize.height = 5;
+        var listTuneClass = classifierTab.add("dropdownlist", undefined, classifiers.get_tune_clas_list());
+        listTuneClass.selection = 0;
+        listTuneClass.minimumSize.width = 200;
 
 
-      classifierPanel.add("statictext", undefined, "Season No.", "StaticText");
-      var seasonGrpOne = classifierPanel.add("group", undefined, "SeasonGrpOne");
-      seasonGrpOne.orientation = "row";
-      var season = seasonGrpOne.add ("edittext", undefined, 0);
-      season.minimumSize.width = 28;
-      var slider = seasonGrpOne.add ("slider", undefined, 0, 0, 20);
+        var spacer_grp = classifierTab.add("group", undefined, "SpacerGRP");
+        spacer_grp.orientation = "column";
+        spacer_grp.minimumSize.height = 5;
 
-      var bumpPanel = groupThree.add("panel", undefined, "Bump Callout");
-      bumpPanel.minimumSize.width = 234;
-      var listBumpMsg = bumpPanel.add("dropdownlist", undefined, classifiers.get_bump_msg_list());
-      listBumpMsg.selection = 0;
-      listBumpMsg.minimumSize.width = 200;
+        var custom_label = classifierTab.add("statictext", undefined, "Custom Tune-in Classifier", "StaticText");
+        custom_label.alignment = "left";
+        var customTuneClass = classifierTab.add("edittext", undefined);
+        customTuneClass.minimumSize.width = 200;
+
+        var spacer_grp2 = classifierTab.add("group", undefined, "SpacerGRP");
+        spacer_grp2.orientation = "column";
+        spacer_grp2.minimumSize.height = 5;
+
+
+        var seasonLabel = classifierTab.add("statictext", undefined, "Season No.", "StaticText");
+        seasonLabel.alignment = "center";
+        var seasonGrpOne = classifierTab.add("group", undefined, "SeasonGrpOne");
+        seasonGrpOne.orientation = "row";
+        seasonGrpOne.alignment = "center";
+        var season = seasonGrpOne.add ("edittext", undefined, 0);
+        season.minimumSize.width = 28;
+        var slider = seasonGrpOne.add ("slider", undefined, 0, 0, 20);
+        
+        var spacer_grp3 = classifierTab.add("group", undefined, "SpacerGRP");
+        spacer_grp3.orientation = "column";
+        spacer_grp3.minimumSize.height = 5;
+
+        var bumpLabel = classifierTab.add("statictext", undefined, "Bump Message", "StaticText");
+        var listBumpMsg = classifierTab.add("dropdownlist", undefined, classifiers.get_bump_msg_list());
+        listBumpMsg.selection = 0;
+        listBumpMsg.minimumSize.width = 200;
+
+        // Callout tab
+        var cotTab = infoTabs.add("tab", undefined, "Callout");
+        cotTab.alignChildren = "fill";
+        cotTab.add("statictext", undefined, "Name", "StaticText");
+        var cot_name = cotTab.add("edittext", undefined);
+        cot_name.minimumSize.width = 210;
+        cotTab.add("statictext", undefined, "Message", "StaticText");
+        var cot_message = cotTab.add("edittext", undefined);
     }
 
 
@@ -1071,6 +1094,9 @@ function hideTime(data) {
       get_classifiers: function() {
         return [listShowClass, listTuneClass, customTuneClass, listBumpMsg];
       },
+
+      get_calloutName: cot_name,
+      get_calloutMsg: cot_message,
 
       set_auto_classifier: function(is_original) {
         var current_state = library.get_log().classifiers[0];
@@ -1863,6 +1889,22 @@ var queue_controller = (function(ui, class_model, tunein_model, dom) {
     trnVer += ui.get_show().toString();
     return trnVer;
   }
+  
+  function capitalize(name) {
+    name = name.toLowerCase().split(" ");
+    var properName = "";
+    for (var i = 0; i < name.length; i++) {
+      if (typeof name[i] !== 'string') return;
+      properName += name[i].charAt(0).toUpperCase() + name[i].slice(1) + "_";
+    }
+    return remove_ending_underscore(properName);
+  }
+
+  function build_cot_name() {
+    var cotName = ui.get_show().toString() + "_";
+    cotName += capitalize(ui.get_calloutName.text);
+    return cotName;
+  }
 
   function build_job_name(theComp) {
     var product = "";
@@ -1882,6 +1924,9 @@ var queue_controller = (function(ui, class_model, tunein_model, dom) {
     } else if (/^trn/i.test(theComp.name)) {
       product = "trn";
       job_name = "TRN_" + build_trn_name(theComp.name);
+      return;
+    } else if (/^cot/i.test(theComp.name)) {
+      job_name = "COT_" + build_cot_name();
       return;
     }
 
@@ -2149,7 +2194,58 @@ var modifier_controller = (function(dom, ui, days_ctrl) {
 })(dom_view, ui_view, days_controller);
 
 
-var event_controller = (function(ui, title_ctrl, version_ctrl, time_ctrl, days_ctrl, class_ctrl, style_ctrl, web, dom, queue, ux, mod) {
+var cot_controller = (function(dom, ui) {
+  var render = function(data) { dom.update_cot(data); };
+
+  var service = {
+    getData: function(payload) { 
+      function getText(obj) {
+        if (obj.text != "") {
+          return obj.text.toUpperCase();
+        } else return "";
+      }
+
+      var data = ["", ""];
+      data[0] = getText(payload[0]);
+      data[1] = getText(payload[1]);
+      return data;
+    } 
+  };
+
+  var cot_machine = new Machine("idle");
+
+  cot_machine.transitions['idle'] = {
+    select: function(payload) {
+      cot_machine.changeStateTo('fetching');
+      var data = service.getData(payload);
+      try {
+        cot_machine.dispatch('success', data);
+      } catch(error) {
+        cot_machine.dispatch('failure', error);
+      }
+    }
+  };
+
+  cot_machine.transitions['fetching'] = {
+    success: function(data) {
+      render(data);
+      cot_machine.changeStateTo('idle');
+    },
+    failure: function(error) {
+      alert("Callout Machine:  " + error.toString());
+      cot_machine.changeStateTo('error');
+    }
+  };
+
+  return {
+    set_cot: function(payload) {
+      cot_machine.dispatch('select', payload);
+    }
+  };
+})(dom_view, ui_view);
+
+
+var event_controller = (function(ui, title_ctrl, version_ctrl, time_ctrl, days_ctrl, class_ctrl, style_ctrl, web, dom, queue, ux, mod, cot_ctrl) {
   Number.isInteger = Number.isInteger || function(value) {
     return typeof value === 'number' &&
       isFinite(value) &&
@@ -2231,6 +2327,8 @@ var event_controller = (function(ui, title_ctrl, version_ctrl, time_ctrl, days_c
     ux.season("slider"); 
     class_ctrl.set_classifiers(ui.get_classifiers());
   });
+  ui.get_calloutName.addEventListener("change", function(evt) { cot_ctrl.set_cot( [ui.get_calloutName, ui.get_calloutMsg] ); });
+  ui.get_calloutMsg.addEventListener("change", function(evt) { cot_ctrl.set_cot( [ui.get_calloutName, ui.get_calloutMsg] ); });
   ui.ui_events.send_to_queue.onClick = function() {
     var jobNum = ui.ui_events.job.text;
     if ( Number.isInteger(parseInt(jobNum)) ) {
@@ -2240,7 +2338,7 @@ var event_controller = (function(ui, title_ctrl, version_ctrl, time_ctrl, days_c
       queue.send_to_queue("");
     } 
   };
-})(ui_view, title_controller, version_controller, time_controller, days_controller, classifier_controller, style_controller, web_controller, dom_view, queue_controller, ux_controller, modifier_controller);
+})(ui_view, title_controller, version_controller, time_controller, days_controller, classifier_controller, style_controller, web_controller, dom_view, queue_controller, ux_controller, modifier_controller, cot_controller);
 
 
 
@@ -2257,6 +2355,7 @@ var controller = (function(ui, show_model, style_model, dom, title_ctrl, class_c
     ui.ui_events.time_list.selection = defaultTime;
     web.set_webMode(false);
     style_ctrl.set_style(0);
+    dom.update_cot(["{Actor Name}", "{Message}"]);
   }
 
   return {

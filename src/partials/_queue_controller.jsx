@@ -171,6 +171,22 @@ var queue_controller = (function(ui, class_model, tunein_model, dom) {
     trnVer += ui.get_show().toString();
     return trnVer;
   }
+  
+  function capitalize(name) {
+    name = name.toLowerCase().split(" ");
+    var properName = "";
+    for (var i = 0; i < name.length; i++) {
+      if (typeof name[i] !== 'string') return;
+      properName += name[i].charAt(0).toUpperCase() + name[i].slice(1) + "_";
+    }
+    return remove_ending_underscore(properName);
+  }
+
+  function build_cot_name() {
+    var cotName = ui.get_show().toString() + "_";
+    cotName += capitalize(ui.get_calloutName.text);
+    return cotName;
+  }
 
   function build_job_name(theComp) {
     var product = "";
@@ -190,6 +206,9 @@ var queue_controller = (function(ui, class_model, tunein_model, dom) {
     } else if (/^trn/i.test(theComp.name)) {
       product = "trn";
       job_name = "TRN_" + build_trn_name(theComp.name);
+      return;
+    } else if (/^cot/i.test(theComp.name)) {
+      job_name = "COT_" + build_cot_name();
       return;
     }
 

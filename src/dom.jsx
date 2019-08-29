@@ -267,6 +267,10 @@ var dom_view = (function(utils) {
     }
   }
 
+  function set_cot(data) {
+    set_text(cot_text, "Name", data[0]);
+    set_text(cot_text, "Message", data[1]);
+  }
 
   return {
     master_ctrl: masterCtrl,
@@ -283,6 +287,7 @@ var dom_view = (function(utils) {
     update_classifiers: function(data) { set_classifiers(data); },
     update_style: function(data) { set_style(data); },
     update_web: function(data) { set_web(data); },
+    update_cot: function(data) { set_cot(data); },
     valid_comps: valid_comps_to_render
   };
 })(utils);

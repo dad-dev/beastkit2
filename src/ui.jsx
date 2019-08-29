@@ -132,48 +132,66 @@
     { // Group 3
       var groupThree = appWin.add("group", undefined, "GroupThree");
       groupThree.orientation = "column";
-      groupThree.alignChildren = "fill";
+      //groupThree.alignChildren = "fill";
+      var infoTabs = groupThree.add("tabbedpanel", undefined);
+      infoTabs.minimumSize.height = 200; 
+      infoTabs.minimumSize.width = 234;
+      infoTabs.alignment = ["", "top"];
 
-      var classifierPanel = groupThree.add("panel", undefined, "Classifiers");
-      classifierPanel.alignment = ["", "top"];
-      classifierPanel.minimumSize.width = 234;
+        // Classifier tab
+        var classifierTab = infoTabs.add("tab", undefined, "Classifiers");
+        classifierTab.alignChildren = "fill";
 
-      var show_clas_list = classifiers.get_show_clas_list();
-      var listShowClass = classifierPanel.add("dropdownlist", undefined, show_clas_list);
-      listShowClass.selection = 0;
-      listShowClass.minimumSize.width = 200;
+        var show_clas_list = classifiers.get_show_clas_list();
+        var listShowClass = classifierTab.add("dropdownlist", undefined, show_clas_list);
+        listShowClass.selection = 0;
+        listShowClass.minimumSize.width = 200;
 
-      var listTuneClass = classifierPanel.add("dropdownlist", undefined, classifiers.get_tune_clas_list());
-      listTuneClass.selection = 0;
-      listTuneClass.minimumSize.width = 200;
-
-
-      var spacer_grp = classifierPanel.add("group", undefined, "SpacerGRP");
-      spacer_grp.orientation = "column";
-      spacer_grp.minimumSize.height = 5;
-
-      var custom_label = classifierPanel.add("statictext", undefined, "Custom Tune-in Classifier", "StaticText");
-      custom_label.alignment = "left";
-      var customTuneClass = classifierPanel.add("edittext", undefined);
-      customTuneClass.minimumSize.width = 200;
-
-      var spacer_grp2 = classifierPanel.add("group", undefined, "SpacerGRP");
-      spacer_grp2.orientation = "column";
-      spacer_grp2.minimumSize.height = 5;
+        var listTuneClass = classifierTab.add("dropdownlist", undefined, classifiers.get_tune_clas_list());
+        listTuneClass.selection = 0;
+        listTuneClass.minimumSize.width = 200;
 
 
-      classifierPanel.add("statictext", undefined, "Season No.", "StaticText");
-      var seasonGrpOne = classifierPanel.add("group", undefined, "SeasonGrpOne");
-      seasonGrpOne.orientation = "row";
-      var season = seasonGrpOne.add ("edittext", undefined, 0);
-      season.minimumSize.width = 28;
-      var slider = seasonGrpOne.add ("slider", undefined, 0, 0, 20);
+        var spacer_grp = classifierTab.add("group", undefined, "SpacerGRP");
+        spacer_grp.orientation = "column";
+        spacer_grp.minimumSize.height = 5;
 
-      var bumpPanel = groupThree.add("panel", undefined, "Bump Callout");
-      bumpPanel.minimumSize.width = 234;
-      var listBumpMsg = bumpPanel.add("dropdownlist", undefined, classifiers.get_bump_msg_list());
-      listBumpMsg.selection = 0;
-      listBumpMsg.minimumSize.width = 200;
+        var custom_label = classifierTab.add("statictext", undefined, "Custom Tune-in Classifier", "StaticText");
+        custom_label.alignment = "left";
+        var customTuneClass = classifierTab.add("edittext", undefined);
+        customTuneClass.minimumSize.width = 200;
+
+        var spacer_grp2 = classifierTab.add("group", undefined, "SpacerGRP");
+        spacer_grp2.orientation = "column";
+        spacer_grp2.minimumSize.height = 5;
+
+
+        var seasonLabel = classifierTab.add("statictext", undefined, "Season No.", "StaticText");
+        seasonLabel.alignment = "center";
+        var seasonGrpOne = classifierTab.add("group", undefined, "SeasonGrpOne");
+        seasonGrpOne.orientation = "row";
+        seasonGrpOne.alignment = "center";
+        var season = seasonGrpOne.add ("edittext", undefined, 0);
+        season.minimumSize.width = 28;
+        var slider = seasonGrpOne.add ("slider", undefined, 0, 0, 20);
+        
+        var spacer_grp3 = classifierTab.add("group", undefined, "SpacerGRP");
+        spacer_grp3.orientation = "column";
+        spacer_grp3.minimumSize.height = 5;
+
+        var bumpLabel = classifierTab.add("statictext", undefined, "Bump Message", "StaticText");
+        var listBumpMsg = classifierTab.add("dropdownlist", undefined, classifiers.get_bump_msg_list());
+        listBumpMsg.selection = 0;
+        listBumpMsg.minimumSize.width = 200;
+
+        // Callout tab
+        var cotTab = infoTabs.add("tab", undefined, "Callout");
+        cotTab.alignChildren = "fill";
+        cotTab.add("statictext", undefined, "Name", "StaticText");
+        var cot_name = cotTab.add("edittext", undefined);
+        cot_name.minimumSize.width = 210;
+        cotTab.add("statictext", undefined, "Message", "StaticText");
+        var cot_message = cotTab.add("edittext", undefined);
     }
 
 
@@ -312,6 +330,9 @@
       get_classifiers: function() {
         return [listShowClass, listTuneClass, customTuneClass, listBumpMsg];
       },
+
+      get_calloutName: cot_name,
+      get_calloutMsg: cot_message,
 
       set_auto_classifier: function(is_original) {
         var current_state = library.get_log().classifiers[0];
