@@ -312,8 +312,14 @@ var event_controller = (function(ui, title_ctrl, version_ctrl, time_ctrl, days_c
   //ui.ui_events.month2.addEventListener("change", function(e) { dates_ctrl.set_dates(ui.ui_events.month2, ui.ui_events.days_of_month2); });
   //ui.ui_events.days_of_month1.addEventListener("change", function(e) { dates_ctrl.set_dates(ui.ui_events.month1, ui.ui_events.days_of_month1); });
   //ui.ui_events.days_of_month2.addEventListener("change", function(e) { dates_ctrl.set_dates(ui.ui_events.month2, ui.ui_events.days_of_month2); });
-  ui.ui_events.show_classifier.addEventListener("change", function(e) { class_ctrl.set_classifiers(ui.get_classifiers()); });
-  ui.ui_events.tunein_classifier.addEventListener("change", function(e) { class_ctrl.set_classifiers(ui.get_classifiers()); });
+  ui.ui_events.show_classifier.addEventListener("change", function(e) {
+    class_ctrl.set_classifiers(ui.get_classifiers());
+    style_ctrl.set_style(0);
+  });
+  ui.ui_events.tunein_classifier.addEventListener("change", function(e) {
+    class_ctrl.set_classifiers(ui.get_classifiers());
+    style_ctrl.set_style(0);
+  });
   ui.ui_events.custom_classifier.addEventListener("change", function(e) {
     ux.classifier();
     class_ctrl.set_classifiers(ui.get_classifiers());
