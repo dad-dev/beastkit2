@@ -10,7 +10,11 @@ function set_title_epl(data) {
 }
 
 function set_title_l3d(data) {
-  l3d_title.layer("Show").property("Source Text").setValue(data.title.replace(/\n/, " ") + " " + data.sub);
+  var strip_linefeeds = function(text) {
+    return text.replace(/\n/, " ");
+  };
+
+  l3d_title.layer("Show").property("Source Text").setValue(strip_linefeeds(data.title) + " " + strip_linefeeds(data.sub));
 }
 
 function set_title(data) {
