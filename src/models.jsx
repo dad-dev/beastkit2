@@ -146,7 +146,7 @@
   // Style Model
   var style_model = (function() {
     var styles = new Model();
-    styles.read_data("../build/data/epl-style.json");
+    styles.read_data("../build/data/epl-style_rev-lj.json");
 
     return {
       get_epl_styles: function() { return styles.data; },

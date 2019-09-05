@@ -119,6 +119,9 @@ var dom_view = (function(utils) {
     if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "Time Database right") {
       var timeDB = app.project.items[i];
     }
+    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "Time Database") {
+      var timeDB_vert = app.project.items[i];
+    }
     if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "Time Database left") {
       var timeDBleft = app.project.items[i];
     }
@@ -146,6 +149,9 @@ var dom_view = (function(utils) {
     }
     if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "Horizontal 5sec submaster") {
       var epl_5s_horiz_sub = app.project.items[i];
+    }
+    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "epl text vert") {
+      var epl_text_vert = app.project.items[i];
     }
     if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "epl text vert move block") {
       var epl_text_vert_a = app.project.items[i];
@@ -444,20 +450,25 @@ function change_time(data) {
     for (var i = 1; i < timeDB.numLayers; i++) {
       timeDB.layer(i).opacity.setValue(0);
       timeDBleft.layer(i).opacity.setValue(0);
+      timeDB_vert.layer(i).opacity.setValue(0);
       timeDBl3d.layer(i).opacity.setValue(0);
     }
     timeDB.layer(data[0] + offset).opacity.setValue(100);
     timeDBleft.layer(data[0] + offset).opacity.setValue(100);
+    timeDB_vert.layer(data[0] + offset).opacity.setValue(100);
     timeDBl3d.layer(data[0] + offset).opacity.setValue(100);
     timeDBleft.layer(25).position.setValue( utils.measure_x(timeDBleft.layer(data[0] + offset), 20) );
+    timeDB_vert.layer(25).position.setValue( utils.measure_x(timeDB_vert.layer(data[0] + offset), 20) );
     timeDBl3d.layer(25).position.setValue( utils.measure_x(timeDBl3d.layer(data[0] + offset), 14) );
     if (data[2]) {
       timeDB.layer(25).property("Source Text").setValue("AM"); 
       timeDBleft.layer(25).property("Source Text").setValue("AM");
+      timeDB_vert.layer(25).property("Source Text").setValue("AM");
       timeDBl3d.layer(25).property("Source Text").setValue("AM");
     } else {
       timeDB.layer(25).property("Source Text").setValue("PM");
       timeDBleft.layer(25).property("Source Text").setValue("PM");
+      timeDB_vert.layer(25).property("Source Text").setValue("PM");
       timeDBl3d.layer(25).property("Source Text").setValue("PM");
     } 
   }
@@ -553,6 +564,21 @@ function hideTime(data) {
     l3d_tunein.layer("Time3").position.setValue([time3_x, 634]);
   }
 
+  function style_adjustment() {
+    var class1_width = Math.round(epl_text_vert_a.layer("Classifier1").sourceRectAtTime(0, true).width);
+    var title_width = Math.round(epl_text_vert_a.layer("Title").sourceRectAtTime(0, true).width);
+    var subtitle_width = Math.round(epl_text_vert_a.layer("Subtitle").sourceRectAtTime(0, true).width);
+    var class2_width = Math.round(epl_text_vert_a.layer("Classifier2").sourceRectAtTime(0, true).width);
+    var day1_width = Math.round(epl_text_vert_b.layer("Day1").sourceRectAtTime(0, true).width +
+      epl_text_vert_b.layer("Ordinal1").sourceRectAtTime(0, true).width);
+    var day2_width = Math.round(epl_text_vert_b.layer("Day2").sourceRectAtTime(0, true).width +
+      epl_text_vert_b.layer("Ordinal2").sourceRectAtTime(0, true).width);
+    var day3_width = Math.round(epl_text_vert_b.layer("Day3").sourceRectAtTime(0, true).width);
+    var max_width = Math.max(class1_width, title_width, subtitle_width, class2_width, day1_width, day2_width, day3_width);
+    // Extent of HD safe (1728) minus the width of text.
+    epl_text_vert.layer("Horizontal Adjustment").position.setValue([1728 - max_width, 250]);
+  }
+
   function set_style(data) {
     var layersGrp1 = ["Classifier1", "Title", "Subtitle", "Classifier2", "Time"];
     layersGrp1.map(function(l) {
@@ -570,6 +596,7 @@ function hideTime(data) {
       epl_text_horiz_b.layer(l).scale.setValue(data[1][l]["scale"]);
     });
 
+    style_adjustment();
     set_style_l3d();
   }
 
@@ -768,7 +795,7 @@ function hideTime(data) {
   // Style Model
   var style_model = (function() {
     var styles = new Model();
-    styles.read_data("../build/data/epl-style.json");
+    styles.read_data("../build/data/epl-style_rev-lj.json");
 
     return {
       get_epl_styles: function() { return styles.data; },
