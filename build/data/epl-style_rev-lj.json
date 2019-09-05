@@ -1,0 +1,1024 @@
+{
+  "Vertical One": {
+    "One Day": {
+
+      "Classifier1": {
+        "position": [1230, 278],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Title": {
+        "position": [1230, 338],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Subtitle": {
+        "position": [1230, 372],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Classifier2": {
+        "position": [1230, 471],
+        "scale": [100,100],
+        "opacity": 100
+      },
+
+      "Day1": {
+        "position": [1230, 524],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Day2": {
+        "position": [1230, 576],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Day3": {
+        "position": [1230, 616],
+        "scale": [90 ,90],
+        "opacity": 100
+      },
+
+      "Ordinal1": {
+        "position": [1230, 524],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Ordinal2": {
+        "position": [1230, 576],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Time": {
+        "position": [960, 540],
+        "scale": [100, 100],
+        "opacity": 100
+      }
+    },
+
+    "Two Day": {
+
+      "Classifier1": {
+        "position": [1230, 278],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Title": {
+        "position": [1230, 338],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Subtitle": {
+        "position": [1230, 372],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Classifier2": {
+        "position": [1230, 471],
+        "scale": [100,100],
+        "opacity": 100
+      },
+
+      "Day1": {
+        "position": [1230, 524],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Day2": {
+        "position": [1230, 576],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Day3": {
+        "position": [1230, 616],
+        "scale": [90 ,90],
+        "opacity": 100
+      },
+
+      "Ordinal1": {
+        "position": [1230, 524],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Ordinal2": {
+        "position": [1230, 576],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Time": {
+        "position": [960, 594],
+        "scale": [100, 100],
+        "opacity": 100
+      }
+    },
+
+    "Three Day": {
+
+      "Classifier1": {
+        "position": [1230, 278],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Title": {
+        "position": [1230, 338],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Subtitle": {
+        "position": [1230, 372],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Classifier2": {
+        "position": [1230, 471],
+        "scale": [100,100],
+        "opacity": 100
+      },
+
+      "Day1": {
+        "position": [1230, 520],
+        "scale": [90, 90],
+        "opacity": 100
+      },
+
+      "Day2": {
+        "position": [1230, 568],
+        "scale": [90, 90],
+        "opacity": 100
+      },
+
+      "Day3": {
+        "position": [1230, 616],
+        "scale": [90 ,90],
+        "opacity": 100
+      },
+
+      "Ordinal1": {
+        "position": [1230, 524],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Ordinal2": {
+        "position": [1230, 576],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Time": {
+        "position": [960, 632],
+        "scale": [100, 100],
+        "opacity": 100
+      }
+    },
+
+    "Next": {
+
+      "Classifier1": {
+        "position": [1230, 278],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Title": {
+        "position": [1230, 338],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Subtitle": {
+        "position": [1230, 372],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Classifier2": {
+        "position": [1230, 471],
+        "scale": [100,100],
+        "opacity": 100
+      },
+
+      "Day1": {
+        "position": [1230, 524],
+        "scale": [120, 120],
+        "opacity": 100
+      },
+
+      "Day2": {
+        "position": [1230, 576],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Day3": {
+        "position": [1230, 616],
+        "scale": [90 ,90],
+        "opacity": 100
+      },
+
+      "Ordinal1": {
+        "position": [1230, 524],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Ordinal2": {
+        "position": [1230, 576],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Time": {
+        "position": [960, 540],
+        "scale": [100, 100],
+        "opacity": 100
+      }
+    }
+  },
+
+
+  "Vertical Two": {
+
+    "One Day": {
+
+      "Classifier1": {
+        "position": [1230, 278],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Title": {
+        "position": [1230, 338],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Subtitle": {
+        "position": [1230, 434],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Classifier2": {
+        "position": [1230, 531],
+        "scale": [100,100],
+        "opacity": 100
+      },
+
+      "Day1": {
+        "position": [1230, 584],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Day2": {
+        "position": [1230, 636],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Day3": {
+        "position": [1230, 676],
+        "scale": [90 ,90],
+        "opacity": 100
+      },
+
+      "Ordinal1": {
+        "position": [1230, 848],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Ordinal2": {
+        "position": [1230, 636],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Time": {
+        "position": [960, 600],
+        "scale": [100, 100],
+        "opacity": 100
+      }
+    },
+
+
+    "Two Day": {
+
+      "Classifier1": {
+        "position": [1230, 278],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Title": {
+        "position": [1230, 338],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Subtitle": {
+        "position": [1230, 434],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Classifier2": {
+        "position": [1230, 531],
+        "scale": [100,100],
+        "opacity": 100
+      },
+
+      "Day1": {
+        "position": [1230, 584],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Day2": {
+        "position": [1230, 636],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Day3": {
+        "position": [1230, 676],
+        "scale": [90 ,90],
+        "opacity": 100
+      },
+
+      "Ordinal1": {
+        "position": [1230, 848],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Ordinal2": {
+        "position": [1230, 636],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Time": {
+        "position": [960, 654],
+        "scale": [100, 100],
+        "opacity": 100
+      }
+    },
+    
+
+    "Three Day": {
+
+      "Classifier1": {
+        "position": [1230, 278],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Title": {
+        "position": [1230, 338],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Subtitle": {
+        "position": [1230, 434],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Classifier2": {
+        "position": [1230, 531],
+        "scale": [100,100],
+        "opacity": 100
+      },
+
+      "Day1": {
+        "position": [1230, 580],
+        "scale": [90, 90],
+        "opacity": 100
+      },
+
+      "Day2": {
+        "position": [1230, 628],
+        "scale": [90, 90],
+        "opacity": 100
+      },
+
+      "Day3": {
+        "position": [1230, 676],
+        "scale": [90 ,90],
+        "opacity": 100
+      },
+
+      "Ordinal1": {
+        "position": [1230, 848],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Ordinal2": {
+        "position": [1230, 636],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Time": {
+        "position": [960, 692],
+        "scale": [100, 100],
+        "opacity": 100
+      }
+    },
+    "Next": {
+
+      "Classifier1": {
+        "position": [1230, 278],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Title": {
+        "position": [1230, 338],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Subtitle": {
+        "position": [1230, 434],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Classifier2": {
+        "position": [1230, 531],
+        "scale": [100,100],
+        "opacity": 100
+      },
+
+      "Day1": {
+        "position": [1230, 584],
+        "scale": [120, 120],
+        "opacity": 100
+      },
+
+      "Day2": {
+        "position": [1230, 636],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Day3": {
+        "position": [1230, 676],
+        "scale": [90 ,90],
+        "opacity": 100
+      },
+
+      "Ordinal1": {
+        "position": [1230, 848],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Ordinal2": {
+        "position": [1230, 636],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Time": {
+        "position": [960, 600],
+        "scale": [100, 100],
+        "opacity": 100
+      }
+    }
+  },
+
+  "Horizontal One": {
+    "One Day": {
+
+      "Classifier1": {
+        "position": [400, 424],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Title": {
+        "position": [400, 484],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Subtitle": {
+        "position": [400, 518],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Classifier2": {
+        "position": [400, 617],
+        "scale": [100,100],
+        "opacity": 100
+      },
+
+      "Day1": {
+        "position": [400, 670],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Day2": {
+        "position": [400, 722],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Day3": {
+        "position": [400, 762],
+        "scale": [90 ,90],
+        "opacity": 100
+      },
+
+      "Ordinal1": {
+        "position": [400, 670],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Ordinal2": {
+        "position": [400, 722],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Time": {
+        "position": [960, 540],
+        "scale": [100, 100],
+        "opacity": 100
+      }
+    },
+
+    "Two Day": {
+
+      "Classifier1": {
+        "position": [400, 424],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Title": {
+        "position": [400, 484],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Subtitle": {
+        "position": [400, 518],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Classifier2": {
+        "position": [400, 617],
+        "scale": [100,100],
+        "opacity": 100
+      },
+
+      "Day1": {
+        "position": [400, 670],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Day2": {
+        "position": [400, 722],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Day3": {
+        "position": [400, 762],
+        "scale": [90 ,90],
+        "opacity": 100
+      },
+
+      "Ordinal1": {
+        "position": [400, 670],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Ordinal2": {
+        "position": [400, 722],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Time": {
+        "position": [960, 594],
+        "scale": [100, 100],
+        "opacity": 100
+      }
+    },
+
+    "Three Day": {
+
+      "Classifier1": {
+        "position": [400, 424],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Title": {
+        "position": [400, 484],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Subtitle": {
+        "position": [400, 518],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Classifier2": {
+        "position": [400, 617],
+        "scale": [100,100],
+        "opacity": 100
+      },
+
+      "Day1": {
+        "position": [400, 666],
+        "scale": [90, 90],
+        "opacity": 100
+      },
+
+      "Day2": {
+        "position": [400, 714],
+        "scale": [90, 90],
+        "opacity": 100
+      },
+
+      "Day3": {
+        "position": [400, 762],
+        "scale": [90 ,90],
+        "opacity": 100
+      },
+
+      "Ordinal1": {
+        "position": [400, 670],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Ordinal2": {
+        "position": [400, 722],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Time": {
+        "position": [960, 632],
+        "scale": [100, 100],
+        "opacity": 100
+      }
+    },
+
+    "Next": {
+
+      "Classifier1": {
+        "position": [400, 424],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Title": {
+        "position": [400, 484],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Subtitle": {
+        "position": [400, 518],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Classifier2": {
+        "position": [400, 617],
+        "scale": [100,100],
+        "opacity": 100
+      },
+
+      "Day1": {
+        "position": [400, 670],
+        "scale": [120, 120],
+        "opacity": 100
+      },
+
+      "Day2": {
+        "position": [400, 722],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Day3": {
+        "position": [400, 762],
+        "scale": [90 ,90],
+        "opacity": 100
+      },
+
+      "Ordinal1": {
+        "position": [400, 670],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Ordinal2": {
+        "position": [400, 722],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Time": {
+        "position": [960, 540],
+        "scale": [100, 100],
+        "opacity": 0
+      }
+    }
+  },
+
+
+  "Horizontal Two": {
+
+    "One Day": {
+
+      "Classifier1": {
+        "position": [400, 424],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Title": {
+        "position": [400, 484],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Subtitle": {
+        "position": [400, 580],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Classifier2": {
+        "position": [400, 677],
+        "scale": [100,100],
+        "opacity": 100
+      },
+
+      "Day1": {
+        "position": [400, 730],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Day2": {
+        "position": [400, 782],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Day3": {
+        "position": [400, 822],
+        "scale": [90 ,90],
+        "opacity": 100
+      },
+
+      "Ordinal1": {
+        "position": [400, 730],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Ordinal2": {
+        "position": [400, 782],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Time": {
+        "position": [960, 600],
+        "scale": [100, 100],
+        "opacity": 100
+      }
+    },
+
+
+    "Two Day": {
+
+      "Classifier1": {
+        "position": [400, 424],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Title": {
+        "position": [400, 484],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Subtitle": {
+        "position": [400, 580],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Classifier2": {
+        "position": [400, 677],
+        "scale": [100,100],
+        "opacity": 100
+      },
+
+      "Day1": {
+        "position": [400, 730],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Day2": {
+        "position": [400, 782],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Day3": {
+        "position": [400, 822],
+        "scale": [90 ,90],
+        "opacity": 100
+      },
+
+      "Ordinal1": {
+        "position": [400, 730],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Ordinal2": {
+        "position": [400, 782],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Time": {
+        "position": [960, 654],
+        "scale": [100, 100],
+        "opacity": 100
+      }
+    },
+    
+
+    "Three Day": {
+
+      "Classifier1": {
+        "position": [400, 424],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Title": {
+        "position": [400, 484],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Subtitle": {
+        "position": [400, 580],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Classifier2": {
+        "position": [400, 677],
+        "scale": [100,100],
+        "opacity": 100
+      },
+
+      "Day1": {
+        "position": [400, 726],
+        "scale": [90, 90],
+        "opacity": 100
+      },
+
+      "Day2": {
+        "position": [400, 774],
+        "scale": [90, 90],
+        "opacity": 100
+      },
+
+      "Day3": {
+        "position": [400, 822],
+        "scale": [90 ,90],
+        "opacity": 100
+      },
+
+      "Ordinal1": {
+        "position": [400, 730],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Ordinal2": {
+        "position": [400, 782],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Time": {
+        "position": [960, 692],
+        "scale": [100, 100],
+        "opacity": 100
+      }
+    },
+
+    "Next": {
+
+      "Classifier1": {
+        "position": [400, 424],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Title": {
+        "position": [400, 484],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Subtitle": {
+        "position": [400, 580],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Classifier2": {
+        "position": [400, 677],
+        "scale": [100,100],
+        "opacity": 100
+      },
+
+      "Day1": {
+        "position": [400, 730],
+        "scale": [120, 120],
+        "opacity": 100
+      },
+
+      "Day2": {
+        "position": [400, 782],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Day3": {
+        "position": [400, 822],
+        "scale": [90 ,90],
+        "opacity": 100
+      },
+
+      "Ordinal1": {
+        "position": [400, 730],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Ordinal2": {
+        "position": [400, 782],
+        "scale": [100, 100],
+        "opacity": 100
+      },
+
+      "Time": {
+        "position": [960, 600],
+        "scale": [100, 100],
+        "opacity": 100
+      }
+    }
+  }
+}

@@ -17,7 +17,7 @@ function change_time(data) {
     timeDBleft.layer(data[0] + offset).opacity.setValue(100);
     timeDBl3d.layer(data[0] + offset).opacity.setValue(100);
     timeDBleft.layer(25).position.setValue( utils.measure_x(timeDBleft.layer(data[0] + offset), 20) );
-    timeDBl3d.layer(25).position.setValue( utils.measure_x(timeDBl3d.layer(data[0] + offset), 20) );
+    timeDBl3d.layer(25).position.setValue( utils.measure_x(timeDBl3d.layer(data[0] + offset), 14) );
     if (data[2]) {
       timeDB.layer(25).property("Source Text").setValue("AM"); 
       timeDBleft.layer(25).property("Source Text").setValue("AM");

@@ -41,6 +41,9 @@
     set_color_on_gradient(pos_ent_horiz_element_8s, "Text", colors[0], colors[1]);
     set_color_on_gradient(ion_logo_horiz_element_8s, "Logo", colorversion.bg1, colorversion.bg2);
     set_color_on_gradient(ion_logo_horiz_element_8s, "BG", colorversion.fg1, colorversion.fg2);
+
+    set_color_on_gradient(logo_generic, "Logo element", colorversion.bg1, colorversion.bg2);
+    set_color_on_gradient(logo5, "BG", colorversion.fg1, colorversion.fg2);
   }
 
   function set_color_version(col, version) {
@@ -75,7 +78,7 @@
       }
     };
 
-    [pos_ent_vert_element_5s, pos_ent_horiz_element_5s, ion_logo_vert_element_8s, ion_logo_horiz_element_8s].map(setUp);
+    [pos_ent_vert_element_5s, pos_ent_horiz_element_5s, ion_logo_vert_element_8s, ion_logo_horiz_element_8s, logo5].map(setUp);
   }
 
   function set_colors_l3d(colors) {

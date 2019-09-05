@@ -1,6 +1,6 @@
 {
   "BBD": {
-    "title": "BLUE\nBLOODS",
+    "title": "BLUE BLOODS",
     "subtitle": "",
     "style": {
               "pos": [294, 354],
@@ -13,7 +13,7 @@
             }
   },
   "BRN": {
-    "title": "BURN\nNOTICE",
+    "title": "BURN NOTICE",
     "subtitle": "",
     "style": {
               "pos": [294, 354],
@@ -26,7 +26,7 @@
             }
   },
   "CPD": {
-    "title": "CHICAGO\nP.D.",
+    "title": "CHICAGO P.D.",
     "subtitle": "",
     "style": {
               "pos": [294, 354],
@@ -39,7 +39,7 @@
             }
   },
   "CRM": {
-    "title": "CRIMINAL\nMINDS",
+    "title": "CRIMINAL MINDS",
     "subtitle": "",
     "style": {
               "pos": [294, 354],
@@ -52,7 +52,7 @@
             }
   },
   "CSB": {
-    "title": "CRIMINAL\nMINDS",
+    "title": "CRIMINAL MINDS",
     "subtitle": "SUSPECT BEHAVIOR",
     "style": {
               "pos": [294, 354],
@@ -78,7 +78,7 @@
             }
   },
   "DEL": {
-    "title": "THE\nDETAIL",
+    "title": "THE DETAIL",
     "subtitle": "",
     "style": {
               "pos": [294, 354],
@@ -91,7 +91,7 @@
             }
   },
   "GHW": {
-    "title": "GHOST\nWHISPERER",
+    "title": "GHOST WHISPERER",
     "subtitle": "",
     "style": {
               "pos": [294, 354],
@@ -104,7 +104,7 @@
             }
   },
   "LWO": {
-    "title": "LAW &\nORDER",
+    "title": "LAW & ORDER",
     "subtitle": "",
     "style": {
               "pos": [294, 354],
@@ -117,7 +117,7 @@
             }
   },
   "LAO": {
-    "title": "LAW &\nORDER",
+    "title": "LAW & ORDER",
     "subtitle": "CRIMINAL INTENT",
     "style": {
               "pos": [294, 354],
@@ -130,7 +130,7 @@
             }
   },
   "SVU": {
-    "title": "LAW &\nORDER",
+    "title": "LAW & ORDER",
     "subtitle": "SVU",
     "style": {
               "pos": [294, 354],
@@ -156,7 +156,7 @@
             }
   },
   "LST": {
-    "title": "THE\nLISTENER",
+    "title": "THE LISTENER",
     "subtitle": "",
     "style": {
               "pos": [294, 354],
@@ -208,7 +208,7 @@
             }
   },
   "RBL": {
-    "title": "ROOKIE\nBLUE",
+    "title": "ROOKIE BLUE",
     "subtitle": "",
     "style": {
               "pos": [294, 354],
@@ -221,7 +221,7 @@
             }
   },
   "SVH": {
-    "title": "SAVING\nHOPE",
+    "title": "SAVING HOPE",
     "subtitle": "",
     "style": {
               "pos": [294, 354],
@@ -234,7 +234,7 @@
             }
   },
   "WHC": {
-    "title": "WHITE\nCOLLAR",
+    "title": "WHITE COLLAR",
     "subtitle": "",
     "style": {
               "pos": [294, 354],

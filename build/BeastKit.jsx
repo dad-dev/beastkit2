@@ -250,6 +250,13 @@ var dom_view = (function(utils) {
     if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "COT Text element") {
       var cot_text = app.project.items[i];
     }
+    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "LOG 5sec") {
+      var logo5 = app.project.items[i];
+      valid_comps_to_render.push(logo5);
+    }
+    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "Logo generic") {
+      var logo_generic = app.project.items[i];
+    }
   }
 
 
@@ -270,7 +277,6 @@ function set_title_l3d(data) {
     return text.replace(/\n/, " ");
   };
 
-  //l3d_title.layer("Show").property("Source Text").setValue(data.title.replace(/\n/, " ") + " " + data.sub);
   l3d_title.layer("Show").property("Source Text").setValue(strip_linefeeds(data.title) + " " + strip_linefeeds(data.sub));
 }
 
@@ -329,6 +335,9 @@ function set_title(data) {
     set_color_on_gradient(pos_ent_horiz_element_8s, "Text", colors[0], colors[1]);
     set_color_on_gradient(ion_logo_horiz_element_8s, "Logo", colorversion.bg1, colorversion.bg2);
     set_color_on_gradient(ion_logo_horiz_element_8s, "BG", colorversion.fg1, colorversion.fg2);
+
+    set_color_on_gradient(logo_generic, "Logo element", colorversion.bg1, colorversion.bg2);
+    set_color_on_gradient(logo5, "BG", colorversion.fg1, colorversion.fg2);
   }
 
   function set_color_version(col, version) {
@@ -363,7 +372,7 @@ function set_title(data) {
       }
     };
 
-    [pos_ent_vert_element_5s, pos_ent_horiz_element_5s, ion_logo_vert_element_8s, ion_logo_horiz_element_8s].map(setUp);
+    [pos_ent_vert_element_5s, pos_ent_horiz_element_5s, ion_logo_vert_element_8s, ion_logo_horiz_element_8s, logo5].map(setUp);
   }
 
   function set_colors_l3d(colors) {
@@ -441,7 +450,7 @@ function change_time(data) {
     timeDBleft.layer(data[0] + offset).opacity.setValue(100);
     timeDBl3d.layer(data[0] + offset).opacity.setValue(100);
     timeDBleft.layer(25).position.setValue( utils.measure_x(timeDBleft.layer(data[0] + offset), 20) );
-    timeDBl3d.layer(25).position.setValue( utils.measure_x(timeDBl3d.layer(data[0] + offset), 20) );
+    timeDBl3d.layer(25).position.setValue( utils.measure_x(timeDBl3d.layer(data[0] + offset), 14) );
     if (data[2]) {
       timeDB.layer(25).property("Source Text").setValue("AM"); 
       timeDBleft.layer(25).property("Source Text").setValue("AM");
@@ -495,11 +504,11 @@ function hideTime(data) {
       },
       2: {
         times: [3.2333, 4.3333],
-        values: [ [960, 540], [960, 461] ]
+        values: [ [960, 540], [960, 493] ]
       },
       3: {
         times: [2.6666, 3.5, 4.6666, 5.5],
-        values: [ [960, 540], [960, 461], [960, 461], [960, 382] ]
+        values: [ [960, 540], [960, 493], [960, 493], [960, 446] ]
       }
     };
     prop.setValuesAtTimes(animation[count]['times'], animation[count]['values']);
@@ -530,18 +539,18 @@ function hideTime(data) {
 
 
   function set_style_l3d() {
-    var day_x = Math.max(utils.measure_x(l3d_title.layer("Classifier1"), 51)[0], utils.measure_x(l3d_title.layer("Show"), 51)[0]);
-    l3d_title.layer("Classifier2").position.setValue([day_x, 407]);
-    l3d_tunein.layer("Day1").position.setValue([day_x, 478]);
-    l3d_tunein.layer("Day2").position.setValue([day_x, 557]);
-    l3d_tunein.layer("Day3").position.setValue([day_x, 636]);
+    var day_x = Math.max(utils.measure_x(l3d_title.layer("Classifier1"), 32)[0], utils.measure_x(l3d_title.layer("Show"), 32)[0]);
+    l3d_title.layer("Classifier2").position.setValue([day_x, 941]);
+    l3d_tunein.layer("Day1").position.setValue([day_x, 983]);
+    l3d_tunein.layer("Day2").position.setValue([day_x, 1030]);
+    l3d_tunein.layer("Day3").position.setValue([day_x, 1077]);
 
-    var time1_x = 960 + ( utils.measure_x(l3d_tunein.layer("Day1"), 32)[0] - 1136 );
-    var time2_x = 960 + ( utils.measure_x(l3d_tunein.layer("Day2"), 32)[0] - 1136 );
-    var time3_x = 960 + ( utils.measure_x(l3d_tunein.layer("Day3"), 32)[0] - 1136 );
+    var time1_x = 960 + ( utils.measure_x(l3d_tunein.layer("Day1"), 24)[0] - 1136 );
+    var time2_x = 960 + ( utils.measure_x(l3d_tunein.layer("Day2"), 24)[0] - 1136 );
+    var time3_x = 960 + ( utils.measure_x(l3d_tunein.layer("Day3"), 24)[0] - 1136 );
     l3d_tunein.layer("Time1").position.setValue([time1_x, 540]);
-    l3d_tunein.layer("Time2").position.setValue([time2_x, 619]);
-    l3d_tunein.layer("Time3").position.setValue([time3_x, 698]);
+    l3d_tunein.layer("Time2").position.setValue([time2_x, 587]);
+    l3d_tunein.layer("Time3").position.setValue([time3_x, 634]);
   }
 
   function set_style(data) {
@@ -1924,7 +1933,7 @@ var queue_controller = (function(ui, class_model, tunein_model, dom) {
       job_name = "L3D_";
     } else if (/^bug/i.test(theComp.name)) {
       product = "bug";
-      job_name = "BUG_" + ui.get_show().toString();
+      job_name = "BUG"; // + ui.get_show().toString();
       return;
     } else if (/^trn/i.test(theComp.name)) {
       product = "trn";
