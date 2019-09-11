@@ -135,7 +135,7 @@
       //groupThree.alignChildren = "fill";
       var infoTabs = groupThree.add("tabbedpanel", undefined);
       infoTabs.minimumSize.height = 200; 
-      infoTabs.minimumSize.width = 234;
+      infoTabs.maximumSize.width = 234;
       infoTabs.alignment = ["", "top"];
 
         // Classifier tab
@@ -192,6 +192,12 @@
         cot_name.minimumSize.width = 210;
         cotTab.add("statictext", undefined, "Message", "StaticText");
         var cot_message = cotTab.add("edittext", undefined);
+
+        // Transitions custom tab
+        var transTab = infoTabs.add("tab", undefined, "Transitions");
+        transTab.alignChildren = "fill";
+        transTab.add("statictext", undefined, "Custom Text", "StaticText");
+        var tranCustom = transTab.add("edittext", undefined);
     }
 
 
@@ -333,6 +339,7 @@
 
       get_calloutName: cot_name,
       get_calloutMsg: cot_message,
+      get_tranCust: tranCustom,
 
       set_auto_classifier: function(is_original) {
         var current_state = library.get_log().classifiers[0];

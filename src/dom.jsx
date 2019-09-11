@@ -155,8 +155,46 @@ var dom_view = (function(utils) {
       var logo5 = app.project.items[i];
       valid_comps_to_render.push(logo5);
     }
+    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "LOG 10sec") {
+      var logo10 = app.project.items[i];
+      valid_comps_to_render.push(logo10);
+    }
+    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "LOG 30sec") {
+      var logo30 = app.project.items[i];
+      valid_comps_to_render.push(logo30);
+    }
     if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "Logo generic") {
       var logo_generic = app.project.items[i];
+    }
+    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "BBD Horizontal master") {
+      var bbd_h = app.project.items[i];
+      valid_comps_to_render.push(bbd_h);
+    }
+    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "BBD Vertical master") {
+      var bbd_v = app.project.items[i];
+      valid_comps_to_render.push(bbd_v);
+    }
+    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "Horiz Transition element") {
+      var bbd_h_trn = app.project.items[i];
+    }
+    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "Vert Transition element") {
+      var bbd_v_trn = app.project.items[i];
+    }
+    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "BBD Logo element") {
+      var bbd_logo = app.project.items[i];
+    }
+    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "BMP master") {
+      var bmp = app.project.items[i];
+      valid_comps_to_render.push(bmp);
+    }
+    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "Hero Logo Bump element") {
+      var bmp_logo = app.project.items[i];
+    }
+    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "BMP submaster") {
+      var bmp_show_select = app.project.items[i];
+    }
+    if (app.project.items[i] instanceof CompItem && app.project.items[i].name == "BMP Audio submaster") {
+      var bmp_audio = app.project.items[i];
     }
   }
 
@@ -301,6 +339,11 @@ var dom_view = (function(utils) {
     set_text(cot_text, "Message", data[1]);
   }
 
+  function set_trans_custom(data) {
+    set_text(trn_logo, "Text", data[0]);
+    trn_logo.layer("Logo").enabled = data[1];
+  }
+
   return {
     master_ctrl: masterCtrl,
     update_show: function(data) { set_show(data); },
@@ -317,6 +360,7 @@ var dom_view = (function(utils) {
     update_style: function(data) { set_style(data); },
     update_web: function(data) { set_web(data); },
     update_cot: function(data) { set_cot(data); },
+    update_trans_cust: function(data) { set_trans_custom(data); },
     valid_comps: valid_comps_to_render
   };
 })(utils);

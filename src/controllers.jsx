@@ -244,8 +244,71 @@ var cot_controller = (function(dom, ui) {
   };
 })(dom_view, ui_view);
 
+var transition_custom_controller = (function(dom, ui) {
+  var render = function(data) { dom.update_trans_cust(data); };
 
-var event_controller = (function(ui, title_ctrl, version_ctrl, time_ctrl, days_ctrl, class_ctrl, style_ctrl, web, dom, queue, ux, mod, cot_ctrl) {
+  var service = {
+    getData: function(payload) {
+      var data = payload.text.split(' ');
+
+      switch(data.length) {
+        case 3 :
+          data = data[0] + " " + data[1] + "\n" + data[2];
+          break;
+
+        case 2 :
+          data = data[0] + " " + data[1];
+          break;
+
+        case 1 :
+          data = data[0];
+          break;
+
+        default :
+          var regex = /(\w+\W*\s\w+\W*)\s(.+)/;
+          data = payload.text.replace(regex, "$1\n$2");
+      }
+
+      if (data == "") {
+        data = [data, true];
+      } else data = [data.toUpperCase(), false];
+      return data;
+    }
+  };
+
+  var transition_custom_machine = new Machine("idle");
+
+  transition_custom_machine.transitions['idle'] = {
+    select: function(payload) {
+      transition_custom_machine.changeStateTo('fetching');
+      var data = service.getData(payload);
+      try {
+        transition_custom_machine.dispatch('success', data);
+      } catch(error) {
+        transition_custom_machine.dispatch('failure', error);
+      }
+    }
+  };
+
+  transition_custom_machine.transitions['fetching'] = {
+    success: function(data) {
+      render(data);
+      transition_custom_machine.changeStateTo('idle');
+    },
+    failure: function(error) {
+      alert("Transition Custom Machine:  " + error.toString());
+      transition_custom_machine.changeStateTo('error');
+    }
+  };
+
+  return {
+    set_trans_custom: function(payload) {
+      transition_custom_machine.dispatch('select', payload);
+    }
+  };
+})(dom_view, ui_view);
+
+var event_controller = (function(ui, title_ctrl, version_ctrl, time_ctrl, days_ctrl, class_ctrl, style_ctrl, web, dom, queue, ux, mod, cot_ctrl, trans_cust_ctrl) {
   Number.isInteger = Number.isInteger || function(value) {
     return typeof value === 'number' &&
       isFinite(value) &&
@@ -335,6 +398,7 @@ var event_controller = (function(ui, title_ctrl, version_ctrl, time_ctrl, days_c
   });
   ui.get_calloutName.addEventListener("change", function(evt) { cot_ctrl.set_cot( [ui.get_calloutName, ui.get_calloutMsg] ); });
   ui.get_calloutMsg.addEventListener("change", function(evt) { cot_ctrl.set_cot( [ui.get_calloutName, ui.get_calloutMsg] ); });
+  ui.get_tranCust.addEventListener("change", function(evt) { trans_cust_ctrl.set_trans_custom(ui.get_tranCust); });
   ui.ui_events.send_to_queue.onClick = function() {
     var jobNum = ui.ui_events.job.text;
     if ( Number.isInteger(parseInt(jobNum)) ) {
@@ -344,7 +408,7 @@ var event_controller = (function(ui, title_ctrl, version_ctrl, time_ctrl, days_c
       queue.send_to_queue("");
     } 
   };
-})(ui_view, title_controller, version_controller, time_controller, days_controller, classifier_controller, style_controller, web_controller, dom_view, queue_controller, ux_controller, modifier_controller, cot_controller);
+})(ui_view, title_controller, version_controller, time_controller, days_controller, classifier_controller, style_controller, web_controller, dom_view, queue_controller, ux_controller, modifier_controller, cot_controller, transition_custom_controller);
 
 
 
@@ -362,6 +426,7 @@ var controller = (function(ui, show_model, style_model, dom, title_ctrl, class_c
     web.set_webMode(false);
     style_ctrl.set_style(0);
     dom.update_cot(["{Actor Name}", "{Message}"]);
+    dom.update_trans_cust(["", true]);
   }
 
   return {

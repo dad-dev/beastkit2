@@ -32,7 +32,7 @@ var queue_controller = (function(ui, class_model, tunein_model, dom) {
       else return get_class_code("tune-in", ui.ui_events.tunein_classifier);
     })();
     var bump = get_class_code("bump", ui.ui_events.bump_msg);
-    if (product === "epl" || product === "l3d") {
+    if (product === "epl" || product === "l3d" || product === "bmp") {
       return [show, tunein];
     } else {
       return ""; 
@@ -169,6 +169,9 @@ var queue_controller = (function(ui, class_model, tunein_model, dom) {
       trnVer += "H_";
     } else trnVer += "V_";
     trnVer += ui.get_show().toString();
+    if (ui.get_tranCust.text != "") {
+      trnVer += "_" + ui.get_tranCust.text.toUpperCase().replace(/\s/g, "_");
+    }
     return trnVer;
   }
   
@@ -186,6 +189,12 @@ var queue_controller = (function(ui, class_model, tunein_model, dom) {
     var cotName = ui.get_show().toString() + "_";
     cotName += capitalize(ui.get_calloutName.text);
     return cotName;
+  }
+
+  function build_bbd_name(name) {
+    if (/horizontal/i.test(name)) {
+      return "H_";
+    } else return "V_";
   }
 
   function build_job_name(theComp) {
@@ -210,6 +219,15 @@ var queue_controller = (function(ui, class_model, tunein_model, dom) {
     } else if (/^cot/i.test(theComp.name)) {
       job_name = "COT_" + build_cot_name();
       return;
+    } else if (/^bbd/i.test(theComp.name)) {
+      job_name = "BBD_" + build_bbd_name(theComp.name) + ui.get_show().toString();
+      return;
+    } else if (/^log/i.test(theComp.name)) {
+      job_name = "LOG_" + (/\d{1,}/g).exec(theComp.name)[0] + "_" + ui.get_show().toString();
+      return;
+    } else if (/^bmp/i.test(theComp.name)) {
+      job_name = "BMP_"; 
+      product = "bmp";
     }
 
     show = ui.get_show().toString();
@@ -232,7 +250,8 @@ var queue_controller = (function(ui, class_model, tunein_model, dom) {
   }
 
   function create_file(jobNum) {
-    var job_path = "/dev/null/" + jobNum;
+    //var job_path = "/dev/null/" + jobNum;
+    var job_path = "/Volumes/GFX Delivery_1/_APPROVALS_smartsheet/" + jobNum;
     var job_folder = Folder (job_path);
     var job_file = File (job_path + "/" + job_name);
     job_folder.create();

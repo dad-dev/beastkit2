@@ -43,3 +43,32 @@ var text_block_vert = {
 if (stateNumber & HAS_1LINE) {
   alert("This is a one line title.");
 }
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+var c = app.project.activeItem;
+
+var text = c.layer("Text").text("Source Text").value.toString();
+var result = text.split(' ');
+
+
+
+switch(result.length) {
+    case 3 :
+        c.layer("Text").text("Source Text").setValue(result[0] + " " + result[1] + "\n" + result[2]);
+        break;
+        
+    case 2 :
+        c.layer("Text").text("Source Text").setValue(result[0] + " " + result[1]);
+        break;
+                
+    case 1 :
+        c.layer("Text").text("Source Text").setValue(result[0]);
+        break;
+        
+    default :
+         var regex = /(\w+\W*\s\w+\W*)\s(.+)/;
+         var newText = text.replace(regex, "$1\n$2");
+        c.layer("Text").text("Source Text").setValue(newText);
+}
